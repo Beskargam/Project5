@@ -1,18 +1,24 @@
 <?php
 require('controller.php');
 
-if (isset($_GET['action'])) {
-    if ($_GET['action'] == 'home') {
-        home();
-    } elseif ($_GET['action'] == 'news') {
-        if (isset($_GET['id']) && $_GET['id'] > 0) {
-            news();
+try {
+    if (isset($_GET['action'])) {
+        if ($_GET['action'] == 'home') {
+            home();
+        } elseif ($_GET['action'] == 'news') {
+            if (isset($_GET['id']) && $_GET['iddas'] > 0) {
+                news();
+            } else {
+                throw new Exception('Erreur : L\'identifiant du saut quantum n\'a pas été envoyé');
+            }
         } else {
-            echo 'Erreur : L\'identifiant du saut quantum n\'a pas été envoyé';
+            throw new Exception('Erreur : L\'URL a détecté une anomalie interne');
         }
     } else {
-        echo 'Erreur : L\'URL a détecté une anomalie interne';
+        home();
     }
-} else {
-    home();
+}
+catch(Exception $e) {
+    $errorMessage = $e->getMessage();
+    require('..\Error\errorView.php');
 }
