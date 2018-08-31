@@ -6,7 +6,7 @@ try {
         if ($_GET['action'] == 'home') {
             home();
         } elseif ($_GET['action'] == 'news') {
-            if (isset($_GET['id']) && $_GET['iddas'] > 0) {
+            if (isset($_GET['id']) && $_GET['id'] > 0) {
                 news();
             } else {
                 throw new Exception('Erreur : L\'identifiant du saut quantum n\'a pas été envoyé');
