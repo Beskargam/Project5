@@ -2,7 +2,6 @@
 $loader = new SplClassLoader('Library', '/Model');
 $loader->register();
 
-
 $title = 'Mon blog';
 ?>
 
@@ -14,12 +13,19 @@ $title = 'Mon blog';
 
         <?php
         foreach ($newsList as $news) {
-            ?>
+
+            if (strlen($news->content_news()) <= 200) {
+                $content_news = $news->content_news();
+            } else {
+                $start = substr($news->content_news(), 0, 200);
+                $start = substr($start, 0, strrpos($start, ' ')) . '...';
+                $content_news = $start;
+            } ?>
             <h3><?php echo '<a href="index.php?action=news&amp;id=' . $news->id_news() . '">' . $news->title() . '</a>'; ?></h3>
 
             <em>le <?php echo $news->dateAdd_news()->format('d-m-Y H:i') ?></em>
             <p><?php
-            echo nl2br($news->content_news())
+            echo nl2br($content_news)
             ?></p><?php
             ?><h4>Ecrit par :<br><?php
             echo $news->rank_user() ?><br><?php
