@@ -1,8 +1,4 @@
 <?php
-$loader = new SplClassLoader('Library', '/Model');
-$loader->register();
-
-
 $title = $news->title();
 ?>
 
