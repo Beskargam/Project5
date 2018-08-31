@@ -1,0 +1,55 @@
+<?php
+
+class NewsManagerPDO extends Manager
+{
+    protected $db;
+
+    public function __construct(PDO $db)
+    {
+        $this->db = $db;
+    }
+
+    public function getListNews()
+    {
+        $request = $this->db->query('SELECT n.id id_news, u.author author_user, r.rank rank_user, title, content_news, dateAdd_news, dateEdit_news 
+			FROM news n
+			INNER JOIN users u
+			ON n.author_id = u.id
+			INNER JOIN ranks r
+			ON u.rank_id = r.id
+			ORDER BY dateAdd_news DESC 
+			LIMIT 0, 3');
+
+        $request->setFetchMode(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, 'News');
+
+        $newsList = $request->fetchAll();
+
+        foreach ($newsList as $news) {
+            $news->setDateAdd_news(new DateTime($news->dateAdd_news()));
+            $news->setDateEdit_news(new DateTime($news->dateEdit_news()));
+        }
+        $request->closeCursor();
+        return $newsList;
+    }
+
+    public function getNews($id)
+    {
+        $request = $this->db->prepare('SELECT n.id id_news, u.author author_user, r.rank rank_user, title, content_news, dateAdd_news, dateEdit_news 
+			FROM news n
+			INNER JOIN users u
+			ON n.author_id = u.id
+			INNER JOIN ranks r
+			ON u.rank_id = r.id
+			WHERE n.id = :id');
+        $request->bindValue(':id', (int)$id, PDO::PARAM_INT);
+        $request->execute();
+
+        $request->setFetchMode(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, 'News');
+
+        $news = $request->fetch();
+        $news->setDateAdd_news(new DateTime($news->dateAdd_news()));
+        $news->setDateEdit_news(new DateTime($news->dateEdit_news()));
+
+        return $news;
+    }
+}
