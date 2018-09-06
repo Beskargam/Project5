@@ -1,10 +1,10 @@
 <?php
 
-$title = 'Erreur';
+$title = htmlspecialchars('Erreur');
 ?>
 
 <?php ob_start(); ?>
-    <h3><?php echo ''.$errorMessage ?></h3>
+    <h3><?php echo htmlspecialchars(''.$errorMessage) ?></h3>
 <?php $content = ob_get_clean(); ?>
 
 <?php require('..\View\Layout\layout.php'); ?>
