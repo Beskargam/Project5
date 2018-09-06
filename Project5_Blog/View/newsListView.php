@@ -2,7 +2,7 @@
 $loader = new SplClassLoader('Library', '/Model');
 $loader->register();
 
-$title = 'Mon blog';
+$title = htmlspecialchars('Mon blog');
 ?>
 
 <?php ob_start(); ?>
@@ -21,18 +21,18 @@ $title = 'Mon blog';
                 $start = substr($start, 0, strrpos($start, ' ')) . ' ...';
                 $content_news = $start;
             } ?>
-            <h3><?php echo '<a href="index.php?action=news&amp;id=' . $news->id_news() . '">' . $news->title() . '</a>'; ?></h3>
+            <h3><?php echo '<a href="index.php?action=news&amp;id=' . htmlspecialchars($news->id_news()) . '">' . $news->title() . '</a>'; ?></h3>
 
             <p><?php
-            echo nl2br($content_news)
+            echo nl2br(htmlspecialchars($content_news))
             ?></p><?php
             ?><h4>Ecrit par :<br><?php
-            echo $news->rank_user() ?><br><?php
-            echo $news->author_user() ?><br>
-            Le <em><?php echo $news->dateAdd_news()->format('d-m-Y H:i') ?></em>
+            echo htmlspecialchars($news->rank_user()) ?><br><?php
+            echo htmlspecialchars($news->author_user()) ?><br>
+            Le <em><?php echo htmlspecialchars($news->dateAdd_news()->format('d-m-Y H:i')) ?></em>
             <?php
             if ($news->dateAdd_news() != $news->dateEdit_news()) {
-                ?> - Modifié le <em><?php echo $news->dateEdit_news()->format('d-m-Y H:i') ?></em><?php
+                ?> - Modifié le <em><?php echo htmlspecialchars($news->dateEdit_news()->format('d-m-Y H:i')) ?></em><?php
             } ?></h4><?php
         } ?>
     </div>

@@ -1,5 +1,5 @@
 <?php
-$title = $news->title();
+$title = htmlspecialchars($news->title());
 ?>
 
 <?php ob_start(); ?>
@@ -8,18 +8,18 @@ $title = $news->title();
 
     <div class="news">
 
-        <h3><?php echo $news->title() ?></h3>
+        <h3><?php echo htmlspecialchars($news->title()) ?></h3>
 
         <p><?php
-            echo nl2br($news->content_news())
+            echo nl2br(htmlspecialchars($news->content_news()))
             ?></p><?php
         ?><h4>Ecrit par :<br><?php
-            echo $news->rank_user() ?><br><?php
-            echo $news->author_user() ?><br>
-            Le <em><?php echo $news->dateAdd_news()->format('d-m-Y H:i') ?></em>
+            echo htmlspecialchars($news->rank_user()) ?><br><?php
+            echo htmlspecialchars($news->author_user()) ?><br>
+            Le <em><?php echo htmlspecialchars($news->dateAdd_news()->format('d-m-Y H:i')) ?></em>
             <?php
             if ($news->dateAdd_news() != $news->dateEdit_news()) {
-                ?> - Modifié le <em><?php echo $news->dateEdit_news()->format('d-m-Y H:i') ?></em><?php
+                ?> - Modifié le <em><?php echo htmlspecialchars($news->dateEdit_news()->format('d-m-Y H:i')) ?></em><?php
             } ?></h4>
 
     </div>
