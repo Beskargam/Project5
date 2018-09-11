@@ -1,21 +1,22 @@
 <?php
-//require('controller.php');
+//require('Controller/Frontend/frontend.php');
 if (empty($pageController)){
-    $pageController = 'controller';
+    $pageController = 'frontend';
     $pageController = trim($pageController.'.php');
 }
 $pageController = str_replace('../', 'protect', $pageController);
 $pageController = str_replace(';', 'protect', $pageController);
 $pageController = str_replace('%', 'protect', $pageController);
 if (preg_match('/admin/', $pageController)){
-    echo 'Vous n\'avez pas accès à ce répertoire';
+    throw new Exception('Cette zone est réservée au personnel abilité uniquement');
 }
 else{
+    $pageController = "Controller/Frontend/".$pageController;
     if (file_exists($pageController) && $pageController != 'index.php'){
         require($pageController);
     }
     else{
-        echo 'Page inexistante !';
+        throw new Exception('Vous naviguez dans l\'espace inconnu, il n\'y a rien dans cette zone...');
     }
 }
 
@@ -39,7 +40,7 @@ try {
 catch(Exception $e) {
     $errorMessage = $e->getMessage();
 
-    //require('..\Error\errorView.php');
+    //require('Error\errorView.php');
     if (empty($pageErrorView)){
         $pageErrorView = 'errorView';
         $pageErrorView = trim($pageErrorView.'.php');
@@ -48,15 +49,15 @@ catch(Exception $e) {
     $pageErrorView = str_replace(';', 'protect', $pageErrorView);
     $pageErrorView = str_replace('%', 'protect', $pageErrorView);
     if (preg_match('/admin/', $pageErrorView)){
-        echo 'Vous n\'avez pas accès à ce répertoire';
+        throw new Exception('Cette zone est réservée au personnel abilité uniquement');
     }
     else{
-        $pageErrorView = "../Error/".$pageErrorView;
+        $pageErrorView = "Error/".$pageErrorView;
         if (file_exists($pageErrorView) && $pageErrorView != 'index.php'){
             require($pageErrorView);
         }
         else{
-            echo 'Page inexistante !';
+            throw new Exception('Vous naviguez dans l\'espace inconnu, il n\'y a rien dans cette zone...');
         }
     }
 }
