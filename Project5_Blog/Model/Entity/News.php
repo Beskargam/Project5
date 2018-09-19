@@ -2,9 +2,8 @@
 
 class News
 {
-
     private $id_news;
-    private $author_user;
+    private $pseudo_user;
     private $rank_user;
     private $title;
     private $content_news;
@@ -37,9 +36,9 @@ class News
         return $this->id_news;
     }
 
-    public function author_user()
+    public function pseudo_user()
     {
-        return $this->author_user;
+        return $this->pseudo_user;
     }
 
     public function rank_user()
@@ -73,9 +72,9 @@ class News
         $this->id_news = (int)$id;
     }
 
-    public function setAuthor_user($author_user)
+    public function setPseudo_user($pseudo_user)
     {
-        $this->author_user = $author_user;
+        $this->pseudo_user = $pseudo_user;
     }
 
     public function setRank_user($rank_user)
