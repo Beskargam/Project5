@@ -6,6 +6,7 @@
     <link href="style.css" rel="stylesheet"/>
 </head>
 <body>
+<?= $header ?>
 <?= $content ?>
 </body>
 </html>
