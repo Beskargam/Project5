@@ -22,28 +22,39 @@ if (preg_match('/admin/', $pageController)) {
 try {
     if (isset($_GET['action'])) {
         if ($_GET['action'] == 'home') {
+            if (isset($_POST['pseudo']) && isset($_POST['password'])) {
+                connexion();
+            }
             home();
-        }
-        elseif ($_GET['action'] == 'news')
-        {
+        } elseif ($_GET['action'] == 'news') {
             if (isset($_GET['id']) && $_GET['id'] > 0) {
+                if (isset($_POST['pseudo']) && isset($_POST['password'])) {
+                    connexion();
+                }
                 news();
             } else {
                 throw new Exception('Erreur : L\'identifiant du saut quantum n\'a pas été envoyé');
             }
-        }
-        else
-        {
+        } elseif ($_GET['action'] == 'inscription') {
+            if (isset($_POST['pseudoInscription']) && isset($_POST['passwordInscription'])) {
+                addUser();
+                inscription();
+            }
+            else
+            {
+                if (isset($_POST['pseudo']) && isset($_POST['password'])) {
+                    connexion();
+                }
+                inscription();
+            }
+        } else {
             throw new Exception('Erreur : L\'URL a détecté une anomalie interne');
         }
-    }
-    else
-    {
+    } else {
+        if (isset($_POST['pseudo']) && isset($_POST['password'])) {
+            connexion();
+        }
         home();
-    }
-
-    if (isset($_POST['pseudo']) && isset($_POST['password'])) {
-        connexion();
     }
 
 } catch (Exception $e) {

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le :  mer. 19 sep. 2018 à 08:36
+-- Généré le :  jeu. 20 sep. 2018 à 08:53
 -- Version du serveur :  5.7.19
 -- Version de PHP :  7.1.9
 
@@ -37,8 +37,8 @@ CREATE TABLE IF NOT EXISTS `comments` (
   `dateAdd_comment` datetime NOT NULL,
   `dateEdit_comment` datetime NOT NULL,
   PRIMARY KEY (`id`),
-  KEY `fk_author_id` (`pseudo_id`) USING BTREE,
-  KEY `fk_news_id` (`news_id`)
+  KEY `fk_news_id` (`news_id`),
+  KEY `fk_pseudo_id` (`pseudo_id`) USING BTREE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -101,18 +101,19 @@ CREATE TABLE IF NOT EXISTS `users` (
   `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT,
   `pseudo` varchar(50) NOT NULL,
   `password` char(255) NOT NULL,
-  `rank_id` smallint(5) UNSIGNED NOT NULL,
+  `rank_id` smallint(5) UNSIGNED NOT NULL DEFAULT '4',
   PRIMARY KEY (`id`),
-  UNIQUE KEY `author` (`pseudo`),
+  UNIQUE KEY `pseudo` (`pseudo`) USING BTREE,
   KEY `fk_rank_id` (`rank_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 
 --
 -- Déchargement des données de la table `users`
 --
 
 INSERT INTO `users` (`id`, `pseudo`, `password`, `rank_id`) VALUES
-(1, 'Arcturus Morea', 'NdCHv1417', 1);
+(1, 'Arcturus Morea', '$2y$10$eEmrLAIjOFLm/NtdeWdhXu6v6rIKBSPileiDh6BTbuzGWQpAWqAaa', 1),
+(2, 'Cassiopeia', '$2y$10$q6Zw4.akK50IiQewW6lTOOaHTa68hdgUQY7ucGaA3fi60sZAVr04G', 2);
 
 --
 -- Contraintes pour les tables déchargées

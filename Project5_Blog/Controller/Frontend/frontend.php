@@ -258,15 +258,84 @@ function news()
 
 function connexion()
 {
+    $pseudo = $_POST['pseudo'];
+    $passwordHash = $_POST['password'];
+
     $db = DBFactory::getMysqlConnexionWithPDO();
 
     $usersManager = new UsersManagerPDO($db);
-    $user = $usersManager->getConnexionUser($_POST['pseudo'], $_POST['password']);
-    if (isset($user)){
+    $user = $usersManager->getConnexionUser($pseudo);
+    $password = $user->password();
+    $passwordValid = password_verify($passwordHash, $password);
+    if ($passwordValid) {
         session_start();
         $_SESSION['pseudo'] = $user->pseudo();
         $_SESSION['password'] = $user->password();
         $_SESSION['rank'] = $user->rank();
-        header('location:index.php');
+    }
+}
+
+function inscription()
+{
+    //require('View\Frontend\header.php');
+    if (empty($pageHeader)) {
+        $pageHeader = 'header';
+        $pageHeader = trim($pageHeader . '.php');
+    }
+    $pageHeader = str_replace('../', 'protect', $pageHeader);
+    $pageHeader = str_replace('..\\', 'protect', $pageHeader);
+    $pageHeader = str_replace(';', 'protect', $pageHeader);
+    $pageHeader = str_replace('%', 'protect', $pageHeader);
+    if (preg_match('/admin/', $pageHeader)) {
+        throw new Exception('Cette zone est réservée au personnel abilité uniquement');
+    } else {
+        $pageHeader = 'View/Frontend/' . $pageHeader;
+        if (file_exists($pageHeader) && $pageHeader != 'index.php') {
+            require($pageHeader);
+        } else {
+            throw new Exception('Vous naviguez dans l\'espace inconnu, il n\'y a rien dans cette zone...');
+        }
+    }
+
+    //require('View\Frontend\inscriptionView.php');
+    if (empty($pageInscriptionView)) {
+        $pageInscriptionView = 'inscriptionView';
+        $pageInscriptionView = trim($pageInscriptionView . '.php');
+    }
+    $pageInscriptionView = str_replace('../', 'protect', $pageInscriptionView);
+    $pageInscriptionView = str_replace('..\\', 'protect', $pageInscriptionView);
+    $pageInscriptionView = str_replace(';', 'protect', $pageInscriptionView);
+    $pageInscriptionView = str_replace('%', 'protect', $pageInscriptionView);
+    if (preg_match('/admin/', $pageInscriptionView)) {
+        throw new Exception('Cette zone est réservée au personnel abilité uniquement');
+    } else {
+        $pageInscriptionView = 'View/Frontend/' . $pageInscriptionView;
+        if (file_exists($pageInscriptionView) && $pageInscriptionView != 'index.php') {
+            require($pageInscriptionView);
+        } else {
+            throw new Exception('Vous naviguez dans l\'espace inconnu, il n\'y a rien dans cette zone...');
+        }
+    }
+
+}
+
+function addUser()
+{
+    $pseudo = $_POST['pseudoInscription'];
+    if ($_POST['passwordInscription'] == $_POST['passwordInscriptionConfirmation']) {
+        $password = password_hash($_POST['passwordInscription'], PASSWORD_DEFAULT);
+
+        $db = DBFactory::getMysqlConnexionWithPDO();
+
+        $addUsersManager = new UsersManagerPDO($db);
+        $addUser = $addUsersManager->getAddUser($pseudo, $password);
+
+        $formMessage = "Votre inscription a bien été enregistré";
+        return $formMessage;
+    }
+    else
+    {
+        $formMessage = 'Le mot de passe de confirmation n\'est pas identique à votre mot de passe';
+        return $formMessage;
     }
 }
