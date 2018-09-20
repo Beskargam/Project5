@@ -9,20 +9,15 @@ class UsersManagerPDO extends UsersManager
         $this->db = $db;
     }
 
-    public function getConnexionUser()
+    public function getConnexionUser($pseudo)
     {
-
-        $pseudo = $_POST['pseudo'];
-        $password = $_POST['password'];
-
         $request = $this->db->prepare(
             'SELECT * 
             FROM users u
 			INNER JOIN ranks r
 			ON u.rank_id = r.id 
-            WHERE pseudo = :pseudo AND password = :password');
+            WHERE pseudo = :pseudo');
         $request->bindValue(':pseudo', $pseudo, PDO::PARAM_STR);
-        $request->bindValue(':password', $password, PDO::PARAM_STR);
         $request->execute();
 
         $request->setFetchMode(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, 'user');
@@ -31,4 +26,13 @@ class UsersManagerPDO extends UsersManager
         return $user;
     }
 
+    public function getAddUser($pseudo, $password)
+    {
+        $request = $this->db->prepare(
+            'INSERT INTO users(pseudo, password)
+            VALUES (:pseudo, :password)');
+        $request->bindValue(':pseudo', $pseudo, PDO::PARAM_STR);
+        $request->bindValue(':password', $password, PDO::PARAM_STR);
+        $request->execute();
+    }
 }
