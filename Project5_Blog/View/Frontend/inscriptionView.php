@@ -4,6 +4,7 @@ $title = htmlspecialchars('Inscription');
 
 <?php ob_start(); ?>
     <section>
+
         <p><a href="index.php?action=home">Retour à la liste des billets</a></p>
         <form action="index.php?action=inscription" method="post">
             <p>
@@ -12,12 +13,18 @@ $title = htmlspecialchars('Inscription');
                 <label for="passwordInscription">Votre mot de passe : </label> <input type="password"
                                                                                       name="passwordInscription"
                                                                                       required>
-                <label for="passwordInscription">Confirmez votre mot de passe : </label> <input type="password"
-                                                                                                name="passwordInscription"
-                                                                                                required>
+                <label for="passwordInscriptionConfirmation">Confirmez votre mot de passe : </label> <input
+                        type="password"
+                        name="passwordInscriptionConfirmation"
+                        required>
                 <input type="submit" value="Valider">
             </p>
         </form>
+        <?php
+        if (isset($formMessage)){
+            ?><p><?php echo $formMessage ?></p><?php
+        }?>
+
     </section>
 <?php $content = ob_get_clean();
 
