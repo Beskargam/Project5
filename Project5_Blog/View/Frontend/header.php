@@ -1,14 +1,15 @@
 <?php
-if (session_id() == ''){
+if(!isset($_SESSION))
+{
     session_start();
-} ?>
+}
 
-<?php ob_start(); ?>
+ob_start(); ?>
     <header>
         <div>
             <h1>Mon Site</h1>
             <?php
-            if (isset($_SESSION['pseudo']) AND isset($_SESSION['pseudo']) AND isset($_SESSION['password']) AND isset($_SESSION['rank'])) {
+            if (isset($_SESSION['id']) AND isset($_SESSION['pseudo']) AND isset($_SESSION['rank'])) {
                 echo $_SESSION['rank'] . ' ' . $_SESSION['pseudo'] . ' ';
                 ?><a href="Model\logout.php">Déconnexion</a><?php
             } else { ?>
