@@ -20,21 +20,21 @@ if (preg_match('/admin/', $pageNewsManager)) {
     }
 }
 
-//require('Model\NewsManagerPDO.php');
-if (empty($pageNewsManagerPDO)) {
-    $pageNewsManagerPDO = 'NewsManagerPDO';
-    $pageNewsManagerPDO = trim($pageNewsManagerPDO . '.php');
+//require('Model\CommentsManager.php');
+if (empty($pageCommentsManager)) {
+    $pageCommentsManager = 'CommentsManager';
+    $pageCommentsManager = trim($pageCommentsManager . '.php');
 }
-$pageNewsManagerPDO = str_replace('../', 'protect', $pageNewsManagerPDO);
-$pageNewsManagerPDO = str_replace('..\\', 'protect', $pageNewsManagerPDO);
-$pageNewsManagerPDO = str_replace(';', 'protect', $pageNewsManagerPDO);
-$pageNewsManagerPDO = str_replace('%', 'protect', $pageNewsManagerPDO);
-if (preg_match('/admin/', $pageNewsManagerPDO)) {
+$pageCommentsManager = str_replace('../', 'protect', $pageCommentsManager);
+$pageCommentsManager = str_replace('..\\', 'protect', $pageCommentsManager);
+$pageCommentsManager = str_replace(';', 'protect', $pageCommentsManager);
+$pageCommentsManager = str_replace('%', 'protect', $pageCommentsManager);
+if (preg_match('/admin/', $pageCommentsManager)) {
     throw new Exception('Cette zone est réservée au personnel abilité uniquement');
 } else {
-    $pageNewsManagerPDO = 'Model/' . $pageNewsManagerPDO;
-    if (file_exists($pageNewsManagerPDO) && $pageNewsManagerPDO != 'index.php') {
-        require($pageNewsManagerPDO);
+    $pageCommentsManager = 'Model/' . $pageCommentsManager;
+    if (file_exists($pageCommentsManager) && $pageCommentsManager != 'index.php') {
+        require($pageCommentsManager);
     } else {
         throw new Exception('Vous naviguez dans l\'espace inconnu, il n\'y a rien dans cette zone...');
     }
@@ -55,6 +55,46 @@ if (preg_match('/admin/', $pageUsersManager)) {
     $pageUsersManager = 'Model/' . $pageUsersManager;
     if (file_exists($pageUsersManager) && $pageUsersManager != 'index.php') {
         require($pageUsersManager);
+    } else {
+        throw new Exception('Vous naviguez dans l\'espace inconnu, il n\'y a rien dans cette zone...');
+    }
+}
+
+//require('Model\NewsManagerPDO.php');
+if (empty($pageNewsManagerPDO)) {
+    $pageNewsManagerPDO = 'NewsManagerPDO';
+    $pageNewsManagerPDO = trim($pageNewsManagerPDO . '.php');
+}
+$pageNewsManagerPDO = str_replace('../', 'protect', $pageNewsManagerPDO);
+$pageNewsManagerPDO = str_replace('..\\', 'protect', $pageNewsManagerPDO);
+$pageNewsManagerPDO = str_replace(';', 'protect', $pageNewsManagerPDO);
+$pageNewsManagerPDO = str_replace('%', 'protect', $pageNewsManagerPDO);
+if (preg_match('/admin/', $pageNewsManagerPDO)) {
+    throw new Exception('Cette zone est réservée au personnel abilité uniquement');
+} else {
+    $pageNewsManagerPDO = 'Model/' . $pageNewsManagerPDO;
+    if (file_exists($pageNewsManagerPDO) && $pageNewsManagerPDO != 'index.php') {
+        require($pageNewsManagerPDO);
+    } else {
+        throw new Exception('Vous naviguez dans l\'espace inconnu, il n\'y a rien dans cette zone...');
+    }
+}
+
+//require('Model\CommentsManagerPDO.php');
+if (empty($pageCommentsManagerPDO)) {
+    $pageCommentsManagerPDO = 'CommentsManagerPDO';
+    $pageCommentsManagerPDO = trim($pageCommentsManagerPDO . '.php');
+}
+$pageCommentsManagerPDO = str_replace('../', 'protect', $pageCommentsManagerPDO);
+$pageCommentsManagerPDO = str_replace('..\\', 'protect', $pageCommentsManagerPDO);
+$pageCommentsManagerPDO = str_replace(';', 'protect', $pageCommentsManagerPDO);
+$pageCommentsManagerPDO = str_replace('%', 'protect', $pageCommentsManagerPDO);
+if (preg_match('/admin/', $pageCommentsManagerPDO)) {
+    throw new Exception('Cette zone est réservée au personnel abilité uniquement');
+} else {
+    $pageCommentsManagerPDO = 'Model/' . $pageCommentsManagerPDO;
+    if (file_exists($pageCommentsManagerPDO) && $pageCommentsManagerPDO != 'index.php') {
+        require($pageCommentsManagerPDO);
     } else {
         throw new Exception('Vous naviguez dans l\'espace inconnu, il n\'y a rien dans cette zone...');
     }
@@ -95,6 +135,26 @@ if (preg_match('/admin/', $pageNews)) {
     $pageNews = 'Model/Entity/' . $pageNews;
     if (file_exists($pageNews) && $pageNews != 'index.php') {
         require($pageNews);
+    } else {
+        throw new Exception('Vous naviguez dans l\'espace inconnu, il n\'y a rien dans cette zone...');
+    }
+}
+
+//require('Model\Entity\Comment.php');
+if (empty($pageComment)) {
+    $pageComment = 'Comment';
+    $pageComment = trim($pageComment . '.php');
+}
+$pageComment = str_replace('../', 'protect', $pageComment);
+$pageComment = str_replace('..\\', 'protect', $pageComment);
+$pageComment = str_replace(';', 'protect', $pageComment);
+$pageComment = str_replace('%', 'protect', $pageComment);
+if (preg_match('/admin/', $pageComment)) {
+    throw new Exception('Cette zone est réservée au personnel abilité uniquement');
+} else {
+    $pageComment = 'Model/Entity/' . $pageComment;
+    if (file_exists($pageComment) && $pageComment != 'index.php') {
+        require($pageComment);
     } else {
         throw new Exception('Vous naviguez dans l\'espace inconnu, il n\'y a rien dans cette zone...');
     }
@@ -213,7 +273,10 @@ function news()
     $db = DBFactory::getMysqlConnexionWithPDO();
 
     $newsManager = new NewsManagerPDO($db);
+    $pageCommentsManager = new CommentsManagerPDO($db);
+
     $news = $newsManager->getNews($_GET['id']);
+    $commentsList = $pageCommentsManager->getValidListComments($_GET['id']);
 
     //require('View\Frontend\header.php');
     if (empty($pageHeader)) {
@@ -268,9 +331,12 @@ function connexion()
     $password = $user->password();
     $passwordValid = password_verify($passwordHash, $password);
     if ($passwordValid) {
-        session_start();
+        if(!isset($_SESSION))
+        {
+            session_start();
+        }
+        $_SESSION['id'] = $user->id();
         $_SESSION['pseudo'] = $user->pseudo();
-        $_SESSION['password'] = $user->password();
         $_SESSION['rank'] = $user->rank();
     }
 }
@@ -328,7 +394,7 @@ function addUser()
         $db = DBFactory::getMysqlConnexionWithPDO();
 
         $addUsersManager = new UsersManagerPDO($db);
-        $addUser = $addUsersManager->getAddUser($pseudo, $password);
+        $addUsersManager->getAddUser($pseudo, $password);
 
         $formMessage = "Votre inscription a bien été enregistré";
         return $formMessage;
@@ -338,4 +404,14 @@ function addUser()
         $formMessage = 'Le mot de passe de confirmation n\'est pas identique à votre mot de passe';
         return $formMessage;
     }
+}
+
+function addComment()
+{
+    $content_comment = $_POST['addCommentary'];
+
+        $db = DBFactory::getMysqlConnexionWithPDO();
+
+        $addCommentManager = new CommentsManagerPDO($db);
+        $addCommentManager->AddComments($_GET['id'], $content_comment);
 }
