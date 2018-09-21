@@ -31,6 +31,9 @@ try {
                 if (isset($_POST['pseudo']) && isset($_POST['password'])) {
                     connexion();
                 }
+                if (isset($_POST['addCommentary'])){
+                    addComment();
+                }
                 news();
             } else {
                 throw new Exception('Erreur : L\'identifiant du saut quantum n\'a pas été envoyé');
