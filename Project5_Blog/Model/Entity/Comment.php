@@ -3,8 +3,9 @@
 class Comment
 {
     private $id_comment;
-    private $news_id;
-    private $pseudo_id;
+    private $id_news;
+    private $pseudo;
+    private $rank_user;
     private $content_comment;
     private $dateAdd_comment;
     private $dateEdit_comment;
@@ -35,14 +36,19 @@ class Comment
         return $this->id_comment;
     }
 
-    public function news_id()
+    public function id_news()
     {
-        return $this->news_id;
+        return $this->id_news;
     }
 
-    public function pseudo_id()
+    public function pseudo()
     {
-        return $this->pseudo_id;
+        return $this->pseudo;
+    }
+
+    public function rank_user()
+    {
+        return $this->rank_user;
     }
 
     public function content_comment()
@@ -66,14 +72,19 @@ class Comment
         $this->id_comment = $id_comment;
     }
 
-    public function setNews_id($news_id)
+    public function setId_news($id)
     {
-        $this->news_id = $news_id;
+        $this->id_news = (int)$id;
     }
 
-    public function setPseudo_id($pseudo_id)
+    public function setPseudo($pseudo)
     {
-        $this->$pseudo_id = $pseudo_id;
+        $this->pseudo = $pseudo;
+    }
+
+    public function setRank_user($rank_user)
+    {
+        $this->rank_user = $rank_user;
     }
 
     public function setContent_comment($content_comment)
