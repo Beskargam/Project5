@@ -8,5 +8,6 @@
 <body>
 <?= $header ?>
 <?= $content ?>
+<?= $footer ?>
 </body>
 </html>

@@ -247,6 +247,26 @@ function home()
         }
     }
 
+    //require('View\Frontend\footer.php');
+    if (empty($pageFooter)) {
+        $pageFooter = 'footer';
+        $pageFooter = trim($pageFooter . '.php');
+    }
+    $pageFooter = str_replace('../', 'protect', $pageFooter);
+    $pageFooter = str_replace('..\\', 'protect', $pageFooter);
+    $pageFooter = str_replace(';', 'protect', $pageFooter);
+    $pageFooter = str_replace('%', 'protect', $pageFooter);
+    if (preg_match('/admin/', $pageFooter)) {
+        throw new Exception('Cette zone est réservée au personnel abilité uniquement');
+    } else {
+        $pageFooter = 'View/Frontend/' . $pageFooter;
+        if (file_exists($pageFooter) && $pageFooter != 'index.php') {
+            require($pageFooter);
+        } else {
+            throw new Exception('Vous naviguez dans l\'espace inconnu, il n\'y a rien dans cette zone...');
+        }
+    }
+
     //require('View\Frontend\newsListView.php');
     if (empty($pageNewsListView)) {
         $pageNewsListView = 'newsListView';
@@ -293,6 +313,26 @@ function news()
         $pageHeader = 'View/Frontend/' . $pageHeader;
         if (file_exists($pageHeader) && $pageHeader != 'index.php') {
             require($pageHeader);
+        } else {
+            throw new Exception('Vous naviguez dans l\'espace inconnu, il n\'y a rien dans cette zone...');
+        }
+    }
+
+    //require('View\Frontend\footer.php');
+    if (empty($pageFooter)) {
+        $pageFooter = 'footer';
+        $pageFooter = trim($pageFooter . '.php');
+    }
+    $pageFooter = str_replace('../', 'protect', $pageFooter);
+    $pageFooter = str_replace('..\\', 'protect', $pageFooter);
+    $pageFooter = str_replace(';', 'protect', $pageFooter);
+    $pageFooter = str_replace('%', 'protect', $pageFooter);
+    if (preg_match('/admin/', $pageFooter)) {
+        throw new Exception('Cette zone est réservée au personnel abilité uniquement');
+    } else {
+        $pageFooter = 'View/Frontend/' . $pageFooter;
+        if (file_exists($pageFooter) && $pageFooter != 'index.php') {
+            require($pageFooter);
         } else {
             throw new Exception('Vous naviguez dans l\'espace inconnu, il n\'y a rien dans cette zone...');
         }
@@ -383,6 +423,25 @@ function inscription()
         }
     }
 
+    //require('View\Frontend\footer.php');
+    if (empty($pageFooter)) {
+        $pageFooter = 'footer';
+        $pageFooter = trim($pageFooter . '.php');
+    }
+    $pageFooter = str_replace('../', 'protect', $pageFooter);
+    $pageFooter = str_replace('..\\', 'protect', $pageFooter);
+    $pageFooter = str_replace(';', 'protect', $pageFooter);
+    $pageFooter = str_replace('%', 'protect', $pageFooter);
+    if (preg_match('/admin/', $pageFooter)) {
+        throw new Exception('Cette zone est réservée au personnel abilité uniquement');
+    } else {
+        $pageFooter = 'View/Frontend/' . $pageFooter;
+        if (file_exists($pageFooter) && $pageFooter != 'index.php') {
+            require($pageFooter);
+        } else {
+            throw new Exception('Vous naviguez dans l\'espace inconnu, il n\'y a rien dans cette zone...');
+        }
+    }
 }
 
 function addUser()
