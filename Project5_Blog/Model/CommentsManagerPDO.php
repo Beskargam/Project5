@@ -38,12 +38,7 @@ class CommentsManagerPDO extends CommentsManager
         return $commentsList;
     }
 
-    public function getListComments($id)
-    {
-        // TODO: Implement getListComments() method.
-    }
-
-    public function addComments($id, $content_comment)
+    public function addComment($id, $content_comment)
     {
         $request = $this->db->prepare(
             'INSERT INTO comments(news_id, pseudo_id, content_comment, dateAdd_comment, dateEdit_comment) 
@@ -51,26 +46,6 @@ class CommentsManagerPDO extends CommentsManager
         $request->bindValue(':id', (int)$id, PDO::PARAM_INT);
         $request->bindValue(':session_id', $_SESSION['id'], PDO::PARAM_INT);
         $request->bindValue(':content_comment', $content_comment, PDO::PARAM_STR);
-        $request->execute();
-    }
-
-    public function deleteComments($id_comment)
-    {
-        $request = $this->db->prepare(
-            'DELETE FROM comments 
-            WHERE id = :id_comment');
-        $request->bindValue(':id_comment', $id_comment, PDO::PARAM_INT);
-        $request->execute();
-    }
-
-    public function updateComments(comment $id_comment, $NewContent_comment)
-    {
-        $request = $this->db->prepare(
-            'UPDATE comments
-            SET content_comment = :$NewContent_comment, dateEdit_comment = NOW()
-            WHERE id = :id_comment');
-        $request->bindValue(':NewContent_comment', $NewContent_comment, PDO::PARAM_STR);
-        $request->bindValue(':id_comment', $id_comment, PDO::PARAM_INT);
         $request->execute();
     }
 }
