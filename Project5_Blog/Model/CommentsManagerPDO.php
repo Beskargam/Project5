@@ -27,7 +27,7 @@ class CommentsManagerPDO extends CommentsManager
         $request->bindValue(':id', (int)$id, PDO::PARAM_INT);
         $request->execute();
 
-        $request->setFetchMode(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, 'comment');
+        $request->setFetchMode(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, 'Comment');
 
         $commentsList = $request->fetchall();
         foreach ($commentsList as $comment) {
