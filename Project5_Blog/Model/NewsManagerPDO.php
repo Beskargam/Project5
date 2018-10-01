@@ -54,34 +54,4 @@ class NewsManagerPDO extends NewsManager
 
         return $news;
     }
-
-    protected function addNews(News $news)
-    {
-        $request = $this->db->prepare(
-            'INSERT INTO news (pseudo_id, title, content_news, dateAdd_news, dateEdit_news) 
-            VALUES (:pseudo_id , :title, :content_news, NOW(), NOW());');
-        $request->bindValue(':pseudo_id', $news->pseudo_id());
-        $request->bindValue(':title', $news->title());
-        $request->bindValue(':content_news', $news->content_news());
-
-        $request->execute();
-    }
-
-    public function deleteNews($id)
-    {
-        $this->db->exec('DELETE FROM news WHERE id = ' . (int)$id);
-    }
-
-    protected function updateNews(News $news)
-    {
-        $request = $this->db->prepare(
-            'UPDATE news SET pseudo_id = :pseudo_id, title = :title, content_news = :content_news, dateEdit_news = NOW()
-            WHERE id = :id');
-        $request->bindValue('pseudo_id', $news->pseudo_id());
-        $request->bindValue('title', $news->title());
-        $request->bindValue('content_news', $news->content_news());
-        $request->bindValue('id', $news->id(), PDO::PARAM_INT);
-
-        $request->execute();
-    }
 }
