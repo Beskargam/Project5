@@ -4,7 +4,7 @@ $title = htmlspecialchars('Erreur');
 ?>
 
 <?php ob_start(); ?>
-    <p><a href="index.php?action=home">Retour à la liste des billets</a></p>
+    <p><a href="index.php?action=home">Retour à l\'accueil</a></p>
     <h3><?php echo htmlspecialchars('' . $errorMessage) ?></h3>
 <?php $content = ob_get_clean();
 
