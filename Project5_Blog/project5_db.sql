@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le :  jeu. 20 sep. 2018 à 08:53
+-- Généré le :  lun. 01 oct. 2018 à 16:29
 -- Version du serveur :  5.7.19
 -- Version de PHP :  7.1.9
 
@@ -36,10 +36,21 @@ CREATE TABLE IF NOT EXISTS `comments` (
   `content_comment` text NOT NULL,
   `dateAdd_comment` datetime NOT NULL,
   `dateEdit_comment` datetime NOT NULL,
+  `publication` tinyint(4) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`),
   KEY `fk_news_id` (`news_id`),
   KEY `fk_pseudo_id` (`pseudo_id`) USING BTREE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
+
+--
+-- Déchargement des données de la table `comments`
+--
+
+INSERT INTO `comments` (`id`, `news_id`, `pseudo_id`, `content_comment`, `dateAdd_comment`, `dateEdit_comment`, `publication`) VALUES
+(1, 1, 1, 'Commentaire news 1 news 1 news 1 news 1 news 1 news 1 news 1 news 1 news 1\r\n\r\n news 1 news 1 news 1\r\n\r\n news 1 news 1 news 1 news 1 news 1 news 1\r\n news 1 news 1\r\n news 1 news 1 news 1 news 1', '2018-09-20 15:28:14', '2018-09-20 15:28:14', 1),
+(2, 1, 1, 'Ceci est un autre commentaire pour la news 1 un autre commentaire pour la news 1 un autre commentaire pour la news 1\r\n\r\nun autre commentaire pour la news 1\r\n \r\nun autre commentaire pour la news 1 un autre commentaire pour la news 1', '2018-09-20 15:30:29', '2018-09-20 17:36:15', 0),
+(6, 1, 2, 'Ce commentaire a été modifié une 4eme fois par le formulaire d\'edition', '2018-09-21 10:41:59', '2018-09-28 11:21:04', 1),
+(8, 3, 1, 'Voici un beau commentaire pour cette News', '2018-10-01 18:17:36', '2018-10-01 18:17:36', 1);
 
 -- --------------------------------------------------------
 
@@ -57,7 +68,7 @@ CREATE TABLE IF NOT EXISTS `news` (
   `dateEdit_news` datetime DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `fk_user_id` (`pseudo_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 
 --
 -- Déchargement des données de la table `news`
@@ -65,7 +76,7 @@ CREATE TABLE IF NOT EXISTS `news` (
 
 INSERT INTO `news` (`id`, `pseudo_id`, `title`, `content_news`, `dateAdd_news`, `dateEdit_news`) VALUES
 (1, 1, 'TITRE TEST', 'TEXTE TEXTE TEXTE TEXTE TEXTE TEXTE TEXTE TEXTE TEXTE TEXTE TEXTE TEXTE TEXTE TEXTE TEXTE TEXTE TEXTE TEXTE TEXTE TEXTE TEXTE TEXTE TEXTE TEXTE TEXTE TEXTE TEXTE TEXTE TEXTE TEXTE TEXTE TEXTE TEXTE TEXTE TEXTE TEXTE TEXTE TEXTE TEXTE TEXTE TEXTE TEXTE TEXTE TEXTE TEXTE TEXTE TEXTE TEXTE TEXTE TEXTE TEXTE TEXTE TEXTE TEXTE TEXTE TEXTE TEXTE TEXTE \r\nTEXTE TEXTE TEXTE TEXTE TEXTE TEXTE TEXTE TEXTE TEXTE \r\nTEXTE TEXTE TEXTE TEXTE TEXTE TEXTE TEXTE TEXTE \r\n\r\nTEXTE TEXTE TEXTE TEXTE TEXTE TEXTE TEXTE TEXTE TEXTE ', '2018-08-17 10:30:00', '2018-08-17 10:30:00'),
-(2, 1, 'Deuxième titre News', 'CECI EST UN TEXT D\'EXEMPLE CECI EST UN TEXT D\'EXEMPLE CECI EST UN TEXT D\'EXEMPLE CECI EST UN TEXT D\'EXEMPLE CECI EST UN TEXT D\'EXEMPLE CECI EST UN TEXT D\'EXEMPLE CECI EST UN TEXT D\'EXEMPLE CECI EST UN TEXT D\'EXEMPLE CECI EST UN TEXT D\'EXEMPLE \r\n\r\nCECI EST UN TEXT D\'EXEMPLE \r\nCECI EST UN TEXT D\'EXEMPLE CECI EST UN TEXT D\'EXEMPLE \r\nCECI EST UN TEXT D\'EXEMPLE CECI EST UN TEXT D\'EXEMPLE CECI EST UN TEXT D\'EXEMPLE \r\nCECI EST UN TEXT D\'EXEMPLE CECI EST UN TEXT D\'EXEMPLE ', '2018-08-24 11:23:19', '2018-09-04 15:01:52');
+(3, 1, 'La troisième News modifiée', 'Modifié ! Modifié ! Modifié ! Modifié ! Modifié ! Modifié ! Modifié ! Modifié ! Modifié ! Modifié ! Modifié ! Modifié ! Modifié ! Modifié ! Modifié ! Modifié ! Modifié ! Modifié ! Modifié ! \r\n\r\nModifié ! Modifié ! Modifié ! Modifié ! Modifié ! Modifié ! Modifié ! \r\n\r\nModifié ! Modifié ! Modifié ! ', '2018-09-28 18:48:38', '2018-10-01 15:58:39');
 
 -- --------------------------------------------------------
 
@@ -105,7 +116,7 @@ CREATE TABLE IF NOT EXISTS `users` (
   PRIMARY KEY (`id`),
   UNIQUE KEY `pseudo` (`pseudo`) USING BTREE,
   KEY `fk_rank_id` (`rank_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
 
 --
 -- Déchargement des données de la table `users`
@@ -113,7 +124,12 @@ CREATE TABLE IF NOT EXISTS `users` (
 
 INSERT INTO `users` (`id`, `pseudo`, `password`, `rank_id`) VALUES
 (1, 'Arcturus Morea', '$2y$10$eEmrLAIjOFLm/NtdeWdhXu6v6rIKBSPileiDh6BTbuzGWQpAWqAaa', 1),
-(2, 'Cassiopeia', '$2y$10$q6Zw4.akK50IiQewW6lTOOaHTa68hdgUQY7ucGaA3fi60sZAVr04G', 2);
+(2, 'Cassiopeia', '$2y$10$q6Zw4.akK50IiQewW6lTOOaHTa68hdgUQY7ucGaA3fi60sZAVr04G', 2),
+(4, 'Alci', '$2y$10$bY2oi4z4MF/pNHTRtj.OLOhA/eBNpyrEwGP7Xflm3zON22hAr7PSC', 3),
+(5, 'Amilkar', '$2y$10$H8GxrVriQ7u5pK9a7nViy.9d.ZRMW6c/4bzQoJdWLH4QXNMiHyBpW', 4),
+(6, 'Janee', '$2y$10$r3RRCX8pNcWWfkdl5STLlOjkvZM.kGrkQ02j5unpg0jsQkPu/C1fe', 4),
+(7, 'Kaylee', '$2y$10$PRLSToN8boSaNmmuHc5YqOP9f8dzCx9gwQs98rzyUvDiocXAY0kSO', 4),
+(8, 'Simon', '$2y$10$G22T0hodxsHMO5L0zZhevu.o2Z7DpY831IaVWS0iDa9KUegbmfzku', 4);
 
 --
 -- Contraintes pour les tables déchargées
