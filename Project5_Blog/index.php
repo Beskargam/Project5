@@ -1,8 +1,8 @@
 <?php
 
-//require('Controller/Frontend/frontend.php');
+//require('Controller/frontController.php');
 if (empty($pageController)) {
-    $pageController = 'frontend';
+    $pageController = 'frontController';
     $pageController = trim($pageController . '.php');
 }
 $pageController = str_replace('../', 'protect', $pageController);
@@ -11,7 +11,7 @@ $pageController = str_replace('%', 'protect', $pageController);
 if (preg_match('/admin/', $pageController)) {
     throw new Exception('Cette zone est réservée au personnel abilité uniquement');
 } else {
-    $pageController = "Controller/Frontend/" . $pageController;
+    $pageController = "Controller/" . $pageController;
     if (file_exists($pageController) && $pageController != 'index.php') {
         require($pageController);
     } else {
@@ -22,16 +22,10 @@ if (preg_match('/admin/', $pageController)) {
 try {
     if (isset($_GET['action'])) {
         if ($_GET['action'] == 'home') {
-            if (isset($_POST['pseudo']) && isset($_POST['password'])) {
-                connexion();
-            }
             home();
         } elseif ($_GET['action'] == 'news') {
             if (isset($_GET['id']) && $_GET['id'] > 0) {
-                if (isset($_POST['pseudo']) && isset($_POST['password'])) {
-                    connexion();
-                }
-                if (isset($_POST['addCommentary'])){
+                if (isset($_POST['addCommentary'])) {
                     addComment();
                 }
                 news();
@@ -41,13 +35,8 @@ try {
         } elseif ($_GET['action'] == 'inscription') {
             if (isset($_POST['pseudoInscription']) && isset($_POST['passwordInscription'])) {
                 addUser();
-                inscription();
-            }
-            else
-            {
-                if (isset($_POST['pseudo']) && isset($_POST['password'])) {
-                    connexion();
-                }
+                home();
+            } else {
                 inscription();
             }
         } else {
