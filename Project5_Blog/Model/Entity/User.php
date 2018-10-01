@@ -5,6 +5,7 @@ class User
     private $id;
     private $pseudo;
     private $rank;
+    private $rank_id;
     private $password;
 
 // CONSTRUCTOR
@@ -43,6 +44,11 @@ class User
         return $this->rank;
     }
 
+    public function rank_id()
+    {
+        return $this->rank_id;
+    }
+
     public function password()
     {
         return $this->password;
@@ -56,7 +62,7 @@ class User
 
     public function setPseudo($pseudo)
     {
-        $this->$pseudo = $pseudo;
+        $this->pseudo = $pseudo;
     }
 
     public function setRank($rank)
@@ -64,8 +70,13 @@ class User
         $this->rank = $rank;
     }
 
+    public function setRank_id($rank_id)
+    {
+        $this->rank_id = $rank_id;
+    }
+
     public function setPassword($password)
     {
-        $this->$password = $password;
+        $this->password = $password;
     }
 }
