@@ -20,7 +20,7 @@ class UsersManagerPDO extends UsersManager
         $request->bindValue(':pseudo', $pseudo, PDO::PARAM_STR);
         $request->execute();
 
-        $request->setFetchMode(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, 'user');
+        $request->setFetchMode(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, 'User');
 
         $user = $request->fetch();
         return $user;

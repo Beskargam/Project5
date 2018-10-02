@@ -227,7 +227,7 @@ function home()
     $newsListManager = new NewsManagerPDO($db);
     $newsList = $newsListManager->getListNews();
 
-    //require('View\Frontend\header.php');
+    //require('View\header.php');
     if (empty($pageHeader)) {
         $pageHeader = 'header';
         $pageHeader = trim($pageHeader . '.php');
@@ -239,7 +239,7 @@ function home()
     if (preg_match('/admin/', $pageHeader)) {
         throw new Exception('Cette zone est réservée au personnel abilité uniquement');
     } else {
-        $pageHeader = 'View/Frontend/' . $pageHeader;
+        $pageHeader = 'View/' . $pageHeader;
         if (file_exists($pageHeader) && $pageHeader != 'index.php') {
             require($pageHeader);
         } else {
@@ -247,7 +247,7 @@ function home()
         }
     }
 
-    //require('View\Frontend\footer.php');
+    //require('View\footer.php');
     if (empty($pageFooter)) {
         $pageFooter = 'footer';
         $pageFooter = trim($pageFooter . '.php');
@@ -259,7 +259,7 @@ function home()
     if (preg_match('/admin/', $pageFooter)) {
         throw new Exception('Cette zone est réservée au personnel abilité uniquement');
     } else {
-        $pageFooter = 'View/Frontend/' . $pageFooter;
+        $pageFooter = 'View/' . $pageFooter;
         if (file_exists($pageFooter) && $pageFooter != 'index.php') {
             require($pageFooter);
         } else {
@@ -267,7 +267,7 @@ function home()
         }
     }
 
-    //require('View\Frontend\newsListView.php');
+    //require('View\newsListView.php');
     if (empty($pageNewsListView)) {
         $pageNewsListView = 'newsListView';
         $pageNewsListView = trim($pageNewsListView . '.php');
@@ -279,7 +279,7 @@ function home()
     if (preg_match('/admin/', $pageNewsListView)) {
         throw new Exception('Cette zone est réservée au personnel abilité uniquement');
     } else {
-        $pageNewsListView = 'View/Frontend/' . $pageNewsListView;
+        $pageNewsListView = 'View/' . $pageNewsListView;
         if (file_exists($pageNewsListView) && $pageNewsListView != 'index.php') {
             require($pageNewsListView);
         } else {
@@ -298,7 +298,7 @@ function news()
     $news = $newsManager->getNews($_GET['id']);
     $commentsList = $pageCommentsManager->getValidListComments($_GET['id']);
 
-    //require('View\Frontend\header.php');
+    //require('View\header.php');
     if (empty($pageHeader)) {
         $pageHeader = 'header';
         $pageHeader = trim($pageHeader . '.php');
@@ -310,7 +310,7 @@ function news()
     if (preg_match('/admin/', $pageHeader)) {
         throw new Exception('Cette zone est réservée au personnel abilité uniquement');
     } else {
-        $pageHeader = 'View/Frontend/' . $pageHeader;
+        $pageHeader = 'View/' . $pageHeader;
         if (file_exists($pageHeader) && $pageHeader != 'index.php') {
             require($pageHeader);
         } else {
@@ -318,7 +318,7 @@ function news()
         }
     }
 
-    //require('View\Frontend\footer.php');
+    //require('View\footer.php');
     if (empty($pageFooter)) {
         $pageFooter = 'footer';
         $pageFooter = trim($pageFooter . '.php');
@@ -330,7 +330,7 @@ function news()
     if (preg_match('/admin/', $pageFooter)) {
         throw new Exception('Cette zone est réservée au personnel abilité uniquement');
     } else {
-        $pageFooter = 'View/Frontend/' . $pageFooter;
+        $pageFooter = 'View/' . $pageFooter;
         if (file_exists($pageFooter) && $pageFooter != 'index.php') {
             require($pageFooter);
         } else {
@@ -338,7 +338,7 @@ function news()
         }
     }
 
-    //require('View\Frontend\newsView.php');
+    //require('View\newsView.php');
     if (empty($pageNewsView)) {
         $pageNewsView = 'newsView';
         $pageNewsView = trim($pageNewsView . '.php');
@@ -350,7 +350,7 @@ function news()
     if (preg_match('/admin/', $pageNewsView)) {
         throw new Exception('Cette zone est réservée au personnel abilité uniquement');
     } else {
-        $pageNewsView = 'View/Frontend/' . $pageNewsView;
+        $pageNewsView = 'View/' . $pageNewsView;
         if (file_exists($pageNewsView) && $pageNewsView != 'index.php') {
             require($pageNewsView);
         } else {
@@ -371,19 +371,19 @@ function connexion()
     $password = $user->password();
     $passwordValid = password_verify($passwordHash, $password);
     if ($passwordValid) {
-        if(!isset($_SESSION))
-        {
+        if (!isset($_SESSION)) {
             session_start();
         }
         $_SESSION['id'] = $user->id();
         $_SESSION['pseudo'] = $user->pseudo();
         $_SESSION['rank'] = $user->rank();
+        $_SESSION['rank_id'] = $user->rank_id();
     }
 }
 
 function inscription()
 {
-    //require('View\Frontend\header.php');
+    //require('View\header.php');
     if (empty($pageHeader)) {
         $pageHeader = 'header';
         $pageHeader = trim($pageHeader . '.php');
@@ -395,7 +395,7 @@ function inscription()
     if (preg_match('/admin/', $pageHeader)) {
         throw new Exception('Cette zone est réservée au personnel abilité uniquement');
     } else {
-        $pageHeader = 'View/Frontend/' . $pageHeader;
+        $pageHeader = 'View/' . $pageHeader;
         if (file_exists($pageHeader) && $pageHeader != 'index.php') {
             require($pageHeader);
         } else {
@@ -403,27 +403,7 @@ function inscription()
         }
     }
 
-    //require('View\Frontend\inscriptionView.php');
-    if (empty($pageInscriptionView)) {
-        $pageInscriptionView = 'inscriptionView';
-        $pageInscriptionView = trim($pageInscriptionView . '.php');
-    }
-    $pageInscriptionView = str_replace('../', 'protect', $pageInscriptionView);
-    $pageInscriptionView = str_replace('..\\', 'protect', $pageInscriptionView);
-    $pageInscriptionView = str_replace(';', 'protect', $pageInscriptionView);
-    $pageInscriptionView = str_replace('%', 'protect', $pageInscriptionView);
-    if (preg_match('/admin/', $pageInscriptionView)) {
-        throw new Exception('Cette zone est réservée au personnel abilité uniquement');
-    } else {
-        $pageInscriptionView = 'View/Frontend/' . $pageInscriptionView;
-        if (file_exists($pageInscriptionView) && $pageInscriptionView != 'index.php') {
-            require($pageInscriptionView);
-        } else {
-            throw new Exception('Vous naviguez dans l\'espace inconnu, il n\'y a rien dans cette zone...');
-        }
-    }
-
-    //require('View\Frontend\footer.php');
+    //require('View\footer.php');
     if (empty($pageFooter)) {
         $pageFooter = 'footer';
         $pageFooter = trim($pageFooter . '.php');
@@ -435,9 +415,29 @@ function inscription()
     if (preg_match('/admin/', $pageFooter)) {
         throw new Exception('Cette zone est réservée au personnel abilité uniquement');
     } else {
-        $pageFooter = 'View/Frontend/' . $pageFooter;
+        $pageFooter = 'View/' . $pageFooter;
         if (file_exists($pageFooter) && $pageFooter != 'index.php') {
             require($pageFooter);
+        } else {
+            throw new Exception('Vous naviguez dans l\'espace inconnu, il n\'y a rien dans cette zone...');
+        }
+    }
+
+    //require('View\inscriptionView.php');
+    if (empty($pageInscriptionView)) {
+        $pageInscriptionView = 'inscriptionView';
+        $pageInscriptionView = trim($pageInscriptionView . '.php');
+    }
+    $pageInscriptionView = str_replace('../', 'protect', $pageInscriptionView);
+    $pageInscriptionView = str_replace('..\\', 'protect', $pageInscriptionView);
+    $pageInscriptionView = str_replace(';', 'protect', $pageInscriptionView);
+    $pageInscriptionView = str_replace('%', 'protect', $pageInscriptionView);
+    if (preg_match('/admin/', $pageInscriptionView)) {
+        throw new Exception('Cette zone est réservée au personnel abilité uniquement');
+    } else {
+        $pageInscriptionView = 'View/' . $pageInscriptionView;
+        if (file_exists($pageInscriptionView) && $pageInscriptionView != 'index.php') {
+            require($pageInscriptionView);
         } else {
             throw new Exception('Vous naviguez dans l\'espace inconnu, il n\'y a rien dans cette zone...');
         }
@@ -447,30 +447,21 @@ function inscription()
 function addUser()
 {
     $pseudo = $_POST['pseudoInscription'];
-    if ($_POST['passwordInscription'] == $_POST['passwordInscriptionConfirmation']) {
-        $password = password_hash($_POST['passwordInscription'], PASSWORD_DEFAULT);
 
-        $db = DBFactory::getMysqlConnexionWithPDO();
+    $password = password_hash($_POST['passwordInscription'], PASSWORD_DEFAULT);
 
-        $addUsersManager = new UsersManagerPDO($db);
-        $addUsersManager->getAddUser($pseudo, $password);
+    $db = DBFactory::getMysqlConnexionWithPDO();
 
-        $formMessage = "Votre inscription a bien été enregistré";
-        return $formMessage;
-    }
-    else
-    {
-        $formMessage = 'Le mot de passe de confirmation n\'est pas identique à votre mot de passe';
-        return $formMessage;
-    }
+    $addUsersManager = new UsersManagerPDO($db);
+    $addUsersManager->getAddUser($pseudo, $password);
 }
 
 function addComment()
 {
     $content_comment = $_POST['addCommentary'];
 
-        $db = DBFactory::getMysqlConnexionWithPDO();
+    $db = DBFactory::getMysqlConnexionWithPDO();
 
-        $addCommentManager = new CommentsManagerPDO($db);
-        $addCommentManager->AddComments($_GET['id'], $content_comment);
+    $addCommentManager = new CommentsManagerPDO($db);
+    $addCommentManager->AddComment($_GET['id'], $content_comment);
 }

@@ -9,7 +9,7 @@ ob_start(); ?>
         <div>
             <h1>Mon Site</h1>
             <?php
-            if (isset($_SESSION['id']) AND isset($_SESSION['pseudo']) AND isset($_SESSION['rank'])) {
+            if (isset($_SESSION['id']) AND isset($_SESSION['pseudo']) AND isset($_SESSION['rank']) AND isset($_SESSION['rank_id'])) {
                 echo $_SESSION['rank'] . ' ' . $_SESSION['pseudo'] . ' ';
                 ?><a href="Model\logout.php">Déconnexion</a><?php
             } else { ?>

@@ -1,6 +1,6 @@
 <?php
 
-class User
+class BackUser
 {
     private $id;
     private $pseudo;
