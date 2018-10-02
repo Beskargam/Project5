@@ -20,11 +20,6 @@ $title = htmlspecialchars('Inscription');
                 <input type="submit" value="Valider">
             </p>
         </form>
-        <?php
-        if (isset($formMessage)){
-            ?><p><?php echo $formMessage ?></p><?php
-        }?>
-
     </section>
 <?php $content = ob_get_clean();
 
