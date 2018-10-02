@@ -20,9 +20,29 @@ $pageHeader = str_replace('%', 'protect', $pageHeader);
 if (preg_match('/admin/', $pageHeader)) {
     throw new Exception('Cette zone est réservée au personnel abilité uniquement');
 } else {
-    $pageHeader = 'View/Frontend/' . $pageHeader;
+    $pageHeader = 'View/' . $pageHeader;
     if (file_exists($pageHeader) && $pageHeader != 'index.php') {
         require($pageHeader);
+    } else {
+        throw new Exception('Vous naviguez dans l\'espace inconnu, il n\'y a rien dans cette zone...');
+    }
+}
+
+//require('View\navigation.php');
+if (empty($pageNavigation)) {
+    $pageNavigation = 'navigation';
+    $pageNavigation = trim($pageNavigation . '.php');
+}
+$pageNavigation = str_replace('../', 'protect', $pageNavigation);
+$pageNavigation = str_replace('..\\', 'protect', $pageNavigation);
+$pageNavigation = str_replace(';', 'protect', $pageNavigation);
+$pageNavigation = str_replace('%', 'protect', $pageNavigation);
+if (preg_match('/admin/', $pageNavigation)) {
+    throw new Exception('Cette zone est réservée au personnel abilité uniquement');
+} else {
+    $pageNavigation = 'View/' . $pageNavigation;
+    if (file_exists($pageNavigation) && $pageNavigation != 'index.php') {
+        require($pageNavigation);
     } else {
         throw new Exception('Vous naviguez dans l\'espace inconnu, il n\'y a rien dans cette zone...');
     }
@@ -40,7 +60,7 @@ $pageFooter = str_replace('%', 'protect', $pageFooter);
 if (preg_match('/admin/', $pageFooter)) {
     throw new Exception('Cette zone est réservée au personnel abilité uniquement');
 } else {
-    $pageFooter = 'View/Frontend/' . $pageFooter;
+    $pageFooter = 'View/' . $pageFooter;
     if (file_exists($pageFooter) && $pageFooter != 'index.php') {
         require($pageFooter);
     } else {
