@@ -1,12 +1,7 @@
 <?php
-$loader = new SplClassLoader('Library', '/Model');
-$loader->register();
-
 $title = htmlspecialchars('Mon blog');
 
-?>
-
-<?php ob_start(); ?>
+ob_start(); ?>
     <section class="news">
         <p>Dernières News :</p>
 
