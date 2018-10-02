@@ -20,6 +20,9 @@ if (preg_match('/admin/', $pageController)) {
 }
 
 try {
+    $loader = new SplClassLoader('Library', '/Model');
+    $loader->register();
+
     if (isset($_GET['action'])) {
         if ($_GET['action'] == 'home') {
             home();
