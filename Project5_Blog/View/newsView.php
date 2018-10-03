@@ -4,7 +4,7 @@ $title = htmlspecialchars($news->title());
 
 <?php ob_start(); ?>
     <section class="news">
-        <p><a href="index.php?action=home">Retour à la liste des billets</a></p>
+        <p><a href="index.php?action=home">Retour à la liste des News</a></p>
         <h3><?php echo htmlspecialchars($news->title()) ?></h3>
 
         <p><?php
