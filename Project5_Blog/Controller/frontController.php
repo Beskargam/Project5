@@ -247,6 +247,26 @@ function home()
         }
     }
 
+    //require('View\navigation.php');
+    if (empty($pageNavigation)) {
+        $pageNavigation = 'navigation';
+        $pageNavigation = trim($pageNavigation . '.php');
+    }
+    $pageNavigation = str_replace('../', 'protect', $pageNavigation);
+    $pageNavigation = str_replace('..\\', 'protect', $pageNavigation);
+    $pageNavigation = str_replace(';', 'protect', $pageNavigation);
+    $pageNavigation = str_replace('%', 'protect', $pageNavigation);
+    if (preg_match('/admin/', $pageNavigation)) {
+        throw new Exception('Cette zone est réservée au personnel abilité uniquement');
+    } else {
+        $pageNavigation = 'View/' . $pageNavigation;
+        if (file_exists($pageNavigation) && $pageNavigation != 'index.php') {
+            require($pageNavigation);
+        } else {
+            throw new Exception('Vous naviguez dans l\'espace inconnu, il n\'y a rien dans cette zone...');
+        }
+    }
+
     //require('View\footer.php');
     if (empty($pageFooter)) {
         $pageFooter = 'footer';
@@ -313,6 +333,26 @@ function news()
         $pageHeader = 'View/' . $pageHeader;
         if (file_exists($pageHeader) && $pageHeader != 'index.php') {
             require($pageHeader);
+        } else {
+            throw new Exception('Vous naviguez dans l\'espace inconnu, il n\'y a rien dans cette zone...');
+        }
+    }
+
+    //require('View\navigation.php');
+    if (empty($pageNavigation)) {
+        $pageNavigation = 'navigation';
+        $pageNavigation = trim($pageNavigation . '.php');
+    }
+    $pageNavigation = str_replace('../', 'protect', $pageNavigation);
+    $pageNavigation = str_replace('..\\', 'protect', $pageNavigation);
+    $pageNavigation = str_replace(';', 'protect', $pageNavigation);
+    $pageNavigation = str_replace('%', 'protect', $pageNavigation);
+    if (preg_match('/admin/', $pageNavigation)) {
+        throw new Exception('Cette zone est réservée au personnel abilité uniquement');
+    } else {
+        $pageNavigation = 'View/' . $pageNavigation;
+        if (file_exists($pageNavigation) && $pageNavigation != 'index.php') {
+            require($pageNavigation);
         } else {
             throw new Exception('Vous naviguez dans l\'espace inconnu, il n\'y a rien dans cette zone...');
         }
@@ -403,6 +443,26 @@ function inscription()
         }
     }
 
+    //require('View\navigation.php');
+    if (empty($pageNavigation)) {
+        $pageNavigation = 'navigation';
+        $pageNavigation = trim($pageNavigation . '.php');
+    }
+    $pageNavigation = str_replace('../', 'protect', $pageNavigation);
+    $pageNavigation = str_replace('..\\', 'protect', $pageNavigation);
+    $pageNavigation = str_replace(';', 'protect', $pageNavigation);
+    $pageNavigation = str_replace('%', 'protect', $pageNavigation);
+    if (preg_match('/admin/', $pageNavigation)) {
+        throw new Exception('Cette zone est réservée au personnel abilité uniquement');
+    } else {
+        $pageNavigation = 'View/' . $pageNavigation;
+        if (file_exists($pageNavigation) && $pageNavigation != 'index.php') {
+            require($pageNavigation);
+        } else {
+            throw new Exception('Vous naviguez dans l\'espace inconnu, il n\'y a rien dans cette zone...');
+        }
+    }
+
     //require('View\footer.php');
     if (empty($pageFooter)) {
         $pageFooter = 'footer';
@@ -464,4 +524,133 @@ function addComment()
 
     $addCommentManager = new CommentsManagerPDO($db);
     $addCommentManager->AddComment($_GET['id'], $content_comment);
+}
+
+function contact()
+{
+    //require('View\header.php');
+    if (empty($pageHeader)) {
+        $pageHeader = 'header';
+        $pageHeader = trim($pageHeader . '.php');
+    }
+    $pageHeader = str_replace('../', 'protect', $pageHeader);
+    $pageHeader = str_replace('..\\', 'protect', $pageHeader);
+    $pageHeader = str_replace(';', 'protect', $pageHeader);
+    $pageHeader = str_replace('%', 'protect', $pageHeader);
+    if (preg_match('/admin/', $pageHeader)) {
+        throw new Exception('Cette zone est réservée au personnel abilité uniquement');
+    } else {
+        $pageHeader = 'View/' . $pageHeader;
+        if (file_exists($pageHeader) && $pageHeader != 'index.php') {
+            require($pageHeader);
+        } else {
+            throw new Exception('Vous naviguez dans l\'espace inconnu, il n\'y a rien dans cette zone...');
+        }
+    }
+
+    //require('View\navigation.php');
+    if (empty($pageNavigation)) {
+        $pageNavigation = 'navigation';
+        $pageNavigation = trim($pageNavigation . '.php');
+    }
+    $pageNavigation = str_replace('../', 'protect', $pageNavigation);
+    $pageNavigation = str_replace('..\\', 'protect', $pageNavigation);
+    $pageNavigation = str_replace(';', 'protect', $pageNavigation);
+    $pageNavigation = str_replace('%', 'protect', $pageNavigation);
+    if (preg_match('/admin/', $pageNavigation)) {
+        throw new Exception('Cette zone est réservée au personnel abilité uniquement');
+    } else {
+        $pageNavigation = 'View/' . $pageNavigation;
+        if (file_exists($pageNavigation) && $pageNavigation != 'index.php') {
+            require($pageNavigation);
+        } else {
+            throw new Exception('Vous naviguez dans l\'espace inconnu, il n\'y a rien dans cette zone...');
+        }
+    }
+
+    //require('View\footer.php');
+    if (empty($pageFooter)) {
+        $pageFooter = 'footer';
+        $pageFooter = trim($pageFooter . '.php');
+    }
+    $pageFooter = str_replace('../', 'protect', $pageFooter);
+    $pageFooter = str_replace('..\\', 'protect', $pageFooter);
+    $pageFooter = str_replace(';', 'protect', $pageFooter);
+    $pageFooter = str_replace('%', 'protect', $pageFooter);
+    if (preg_match('/admin/', $pageFooter)) {
+        throw new Exception('Cette zone est réservée au personnel abilité uniquement');
+    } else {
+        $pageFooter = 'View/' . $pageFooter;
+        if (file_exists($pageFooter) && $pageFooter != 'index.php') {
+            require($pageFooter);
+        } else {
+            throw new Exception('Vous naviguez dans l\'espace inconnu, il n\'y a rien dans cette zone...');
+        }
+    }
+
+    //require('View\contactView.php');
+    if (empty($pageContactView)) {
+        $pageContactView = 'contactView';
+        $pageContactView = trim($pageContactView . '.php');
+    }
+    $pageContactView = str_replace('../', 'protect', $pageContactView);
+    $pageContactView = str_replace('..\\', 'protect', $pageContactView);
+    $pageContactView = str_replace(';', 'protect', $pageContactView);
+    $pageContactView = str_replace('%', 'protect', $pageContactView);
+    if (preg_match('/admin/', $pageContactView)) {
+        throw new Exception('Cette zone est réservée au personnel abilité uniquement');
+    } else {
+        $pageContactView = 'View/' . $pageContactView;
+        if (file_exists($pageContactView) && $pageContactView != 'index.php') {
+            require($pageContactView);
+        } else {
+            throw new Exception('Vous naviguez dans l\'espace inconnu, il n\'y a rien dans cette zone...');
+        }
+    }
+}
+
+function sendMessage()
+{
+    if(!isset($_SESSION)) {
+        session_start();
+    }
+    $mail = 'Arcturus.Morea@gmx.com';
+
+    if (!preg_match("#^[a-z0-9._-]+@(hotmail|live|msn).[a-z]{2,4}$#", $mail)) {
+        $break = "\r\n";
+    }
+    else {
+        $break = "\n";
+    }
+
+    $emailContact = $_POST['emailContact'];
+    $subject = $_POST['subjectContact'];
+    $message_txt = $_POST['messageContact'];
+    $message_html = $_POST['messageContact'];
+
+    $boundary = '-----='.md5(rand());
+
+    $header = 'From: "' . $_SESSION['rank'] . ' ' . $_SESSION['pseudo'] . '" <' .$emailContact. '>'.$break;
+    $header.= 'Reply-to: "' . $_SESSION['rank'] . ' ' . $_SESSION['pseudo'] . '" <' .$emailContact. '>'.$break;
+    $header.= 'MIME-Version: 1.0'.$break;
+    $header.= 'Content-Type: multipart/alternative;' .$break. ' boundary="$boundary"' .$break;
+
+    $message = $break.'--'.$boundary.$break;
+
+    //TEXT
+    $message.= 'Content-Type: text/plain; charset="ISO-8859-1"'.$break;
+    $message.= 'Content-Transfer-Encoding: 8bit'.$break;
+    $message.= $break.$message_txt.$break;
+
+    $message.= $break.'--'.$boundary.$break;
+
+    //HTML
+    $message.= 'Content-Type: text/html; charset="ISO-8859-1"'.$break;
+    $message.= 'Content-Transfer-Encoding: 8bit'.$break;
+    $message.= $break.$message_html.$break;
+
+    $message.= $break.'--'.$boundary.'--'.$break;
+    $message.= $break.'--'.$boundary.'--'.$break;
+
+    mail($mail,$subject,$message,$header);
 }
