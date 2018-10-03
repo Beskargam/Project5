@@ -12,7 +12,7 @@ if (preg_match('/admin/', $pageController)) {
     throw new Exception('Cette zone est réservée au personnel abilité uniquement');
 } else {
     $pageController = "Controller/" . $pageController;
-    if (file_exists($pageController) && $pageController != 'index.php') {
+    if (file_exists($pageController) AND $pageController != 'index.php') {
         require($pageController);
     } else {
         throw new Exception('Vous naviguez dans l\'espace inconnu, il n\'y a rien dans cette zone...');
@@ -27,7 +27,7 @@ try {
         if ($_GET['action'] == 'home') {
             home();
         } elseif ($_GET['action'] == 'news') {
-            if (isset($_GET['id']) && $_GET['id'] > 0) {
+            if (isset($_GET['id']) AND $_GET['id'] > 0) {
                 if (isset($_POST['addCommentary'])) {
                     addComment();
                 }
@@ -36,17 +36,25 @@ try {
                 throw new Exception('Erreur : L\'identifiant du saut quantum n\'a pas été envoyé');
             }
         } elseif ($_GET['action'] == 'inscription') {
-            if (isset($_POST['pseudoInscription']) && isset($_POST['passwordInscription'])) {
+            if (isset($_POST['pseudoInscription']) AND isset($_POST['passwordInscription'])) {
                 addUser();
                 home();
             } else {
                 inscription();
             }
+        } elseif ($_GET['action'] == 'contact') {
+            if (isset($_POST['emailContact']) AND isset($_POST['subjectContact']) AND isset($_POST['messageContact'])) {
+                sendMessage();
+                home();
+            }
+            else {
+                contact();
+            }
         } else {
             throw new Exception('Erreur : L\'URL a détecté une anomalie interne');
         }
     } else {
-        if (isset($_POST['pseudo']) && isset($_POST['password'])) {
+        if (isset($_POST['pseudo']) AND isset($_POST['password'])) {
             connexion();
         }
         home();
@@ -67,7 +75,7 @@ try {
         throw new Exception('Cette zone est réservée au personnel abilité uniquement');
     } else {
         $pageErrorView = "Error/" . $pageErrorView;
-        if (file_exists($pageErrorView) && $pageErrorView != 'index.php') {
+        if (file_exists($pageErrorView) AND $pageErrorView != 'index.php') {
             require($pageErrorView);
         } else {
             throw new Exception('Vous naviguez dans l\'espace inconnu, il n\'y a rien dans cette zone...');
