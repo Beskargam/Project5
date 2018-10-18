@@ -39,7 +39,7 @@ try {
         } elseif ($_GET['action'] == 'usersList') {
             usersList();
         } elseif ($_GET['action'] == 'addNews') {
-            if (isset($_POST['addNews']) AND isset($_POST['addTitle_News']) AND isset($_POST['addContent_News'])) {
+            if (isset($_POST['addNews']) AND isset($_POST['addTitle_News']) AND isset($_POST['addIntro_News']) AND isset($_POST['addContent_News'])) {
                 addNews();
                 newsList();
             } else {
@@ -57,7 +57,7 @@ try {
                     deleteComment();
                 } elseif (isset($_POST['idComment']) AND $_POST['idComment'] > 0 AND isset($_POST['editCommentary'])) {
                     editComment();
-                } elseif (isset($_POST['editContent_news']) AND isset($_POST['editTitle_news'])) {
+                } elseif (isset($_POST['editContent_news']) AND isset($_POST['editTitle_news']) AND isset($_POST['editIntro'])) {
                     editNews();
                 }
                 news();

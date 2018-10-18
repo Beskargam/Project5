@@ -4,8 +4,25 @@ $title = htmlspecialchars('Erreur');
 ?>
 
 <?php ob_start(); ?>
-    <p><a href="backIndex.php?action=home">Revenir à l'accueil</a></p>
-    <h3><?php echo htmlspecialchars('' . $errorMessage) ?></h3>
+    <section>
+        <div class="container flipboard-boxes flipboard-error">
+            <div class="col-lg-12 card-error">
+                <div class="card-error-body">
+
+                    <div id="upper_left-corner"></div>
+                    <div id="upper_right-corner"></div>
+                    <div id="lower_left-corner"></div>
+                    <div id="lower_right-corner"></div>
+
+                    <h4 class="card-error-subtitle">TYPE / <span class="post-group">MESSAGE</span></h4>
+                    <h3 class="card-error-title"><?php echo htmlspecialchars('' . $errorMessage) ?></h3>
+                    <p class="card-error-text">
+                        Il est inutile d'appeler un Anvil Crucible Pour ça...
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
 <?php $content = ob_get_clean();
 
 //require('backView\backFrontend\backHeader.php');

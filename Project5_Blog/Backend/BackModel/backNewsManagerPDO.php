@@ -36,7 +36,7 @@ class BackNewsManagerPDO extends BackNewsManager
     public function getNews($id)
     {
         $request = $this->db->prepare(
-            'SELECT n.id id_news, u.pseudo pseudo_user, r.rank rank_user, title, content_news, dateAdd_news, dateEdit_news 
+            'SELECT n.id id_news, u.pseudo pseudo_user, r.rank rank_user, title, intro, content_news, dateAdd_news, dateEdit_news 
 			FROM news n
 			INNER JOIN users u
 			ON n.pseudo_id = u.id
@@ -55,13 +55,14 @@ class BackNewsManagerPDO extends BackNewsManager
         return $news;
     }
 
-    public function AddNews($title, $content_news)
+    public function AddNews($title, $intro, $content_news)
     {
         $request = $this->db->prepare(
-            'INSERT INTO news (pseudo_id, title, content_news, dateAdd_news, dateEdit_news) 
-            VALUES (:session_id , :title, :content_news, NOW(), NOW())');
+            'INSERT INTO news (pseudo_id, title, intro, content_news, dateAdd_news, dateEdit_news) 
+            VALUES (:session_id , :title, :intro, :content_news, NOW(), NOW())');
         $request->bindValue(':session_id', $_SESSION['id'], PDO::PARAM_INT);
         $request->bindValue(':title', $title, PDO::PARAM_STR);
+        $request->bindValue(':intro', $intro, PDO::PARAM_STR);
         $request->bindValue(':content_news', $content_news, PDO::PARAM_STR);
         $request->execute();
     }
@@ -78,7 +79,7 @@ class BackNewsManagerPDO extends BackNewsManager
     public function getEditNewsForm($id_news)
     {
         $request = $this->db->prepare(
-            'SELECT n.id id_news, title, u.pseudo pseudo_user, content_news, dateAdd_news
+            'SELECT n.id id_news, title, intro, u.pseudo pseudo_user, content_news, dateAdd_news
 			FROM news n
 			INNER JOIN users u
 			ON n.pseudo_id = u.id
@@ -93,13 +94,14 @@ class BackNewsManagerPDO extends BackNewsManager
         return $editNewsForm;
     }
 
-    public function updateNews($id_news, $newContent_news, $newTitle_news)
+    public function updateNews($id_news, $newIntro_news, $newContent_news, $newTitle_news)
     {
         $request = $this->db->prepare(
             'UPDATE news
-            SET  title = :newTitle_news, content_news = :newContent_news, dateEdit_news = NOW()
+            SET  title = :newTitle_news, intro = :newIntro_news, content_news = :newContent_news, dateEdit_news = NOW()
             WHERE id = :id_news');
         $request->bindValue(':newTitle_news', $newTitle_news, PDO::PARAM_STR);
+        $request->bindValue(':newIntro_news', $newIntro_news, PDO::PARAM_STR);
         $request->bindValue(':newContent_news', $newContent_news, PDO::PARAM_STR);
         $request->bindValue(':id_news', $id_news, PDO::PARAM_INT);
         $request->execute();

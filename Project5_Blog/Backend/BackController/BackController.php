@@ -723,12 +723,13 @@ function addNewsForm()
 function addNews()
 {
     $title = $_POST['addTitle_News'];
+    $intro = $_POST['addIntro_News'];
     $content_news = $_POST['addContent_News'];
 
     $db = BackDBFactory::getMysqlConnexionWithPDO();
 
     $addNewsManager = new BackNewsManagerPDO($db);
-    $addNewsManager->addNews($title, $content_news);
+    $addNewsManager->addNews($title, $intro, $content_news);
 }
 
 function editNewsForm()
@@ -803,12 +804,13 @@ function editNews()
 {
     $id_news = $_GET['id'];
     $newContent_news = $_POST['editContent_news'];
+    $newIntro_news = $_POST['editIntro'];
     $newTitle_news = $_POST['editTitle_news'];
 
     $db = BackDBFactory::getMysqlConnexionWithPDO();
 
     $updateNewsManager = new BackNewsManagerPDO($db);
-    $updateNewsManager->updateNews($id_news, $newContent_news, $newTitle_news);
+    $updateNewsManager->updateNews($id_news, $newIntro_news, $newContent_news, $newTitle_news);
 }
 
 function deleteNews()
