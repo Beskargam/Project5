@@ -13,7 +13,7 @@ if (preg_match('/admin/', $pageNewsManager)) {
     throw new Exception('Cette zone est réservée au personnel abilité uniquement');
 } else {
     $pageNewsManager = 'Model/' . $pageNewsManager;
-    if (file_exists($pageNewsManager) && $pageNewsManager != 'index.php') {
+    if (file_exists($pageNewsManager) AND $pageNewsManager != 'index.php') {
         require($pageNewsManager);
     } else {
         throw new Exception('Vous naviguez dans l\'espace inconnu, il n\'y a rien dans cette zone...');
@@ -33,7 +33,7 @@ if (preg_match('/admin/', $pageCommentsManager)) {
     throw new Exception('Cette zone est réservée au personnel abilité uniquement');
 } else {
     $pageCommentsManager = 'Model/' . $pageCommentsManager;
-    if (file_exists($pageCommentsManager) && $pageCommentsManager != 'index.php') {
+    if (file_exists($pageCommentsManager) AND $pageCommentsManager != 'index.php') {
         require($pageCommentsManager);
     } else {
         throw new Exception('Vous naviguez dans l\'espace inconnu, il n\'y a rien dans cette zone...');
@@ -53,7 +53,7 @@ if (preg_match('/admin/', $pageUsersManager)) {
     throw new Exception('Cette zone est réservée au personnel abilité uniquement');
 } else {
     $pageUsersManager = 'Model/' . $pageUsersManager;
-    if (file_exists($pageUsersManager) && $pageUsersManager != 'index.php') {
+    if (file_exists($pageUsersManager) AND $pageUsersManager != 'index.php') {
         require($pageUsersManager);
     } else {
         throw new Exception('Vous naviguez dans l\'espace inconnu, il n\'y a rien dans cette zone...');
@@ -73,7 +73,7 @@ if (preg_match('/admin/', $pageNewsManagerPDO)) {
     throw new Exception('Cette zone est réservée au personnel abilité uniquement');
 } else {
     $pageNewsManagerPDO = 'Model/' . $pageNewsManagerPDO;
-    if (file_exists($pageNewsManagerPDO) && $pageNewsManagerPDO != 'index.php') {
+    if (file_exists($pageNewsManagerPDO) AND $pageNewsManagerPDO != 'index.php') {
         require($pageNewsManagerPDO);
     } else {
         throw new Exception('Vous naviguez dans l\'espace inconnu, il n\'y a rien dans cette zone...');
@@ -93,7 +93,7 @@ if (preg_match('/admin/', $pageCommentsManagerPDO)) {
     throw new Exception('Cette zone est réservée au personnel abilité uniquement');
 } else {
     $pageCommentsManagerPDO = 'Model/' . $pageCommentsManagerPDO;
-    if (file_exists($pageCommentsManagerPDO) && $pageCommentsManagerPDO != 'index.php') {
+    if (file_exists($pageCommentsManagerPDO) AND $pageCommentsManagerPDO != 'index.php') {
         require($pageCommentsManagerPDO);
     } else {
         throw new Exception('Vous naviguez dans l\'espace inconnu, il n\'y a rien dans cette zone...');
@@ -113,7 +113,7 @@ if (preg_match('/admin/', $pageUsersManagerPDO)) {
     throw new Exception('Cette zone est réservée au personnel abilité uniquement');
 } else {
     $pageUsersManagerPDO = 'Model/' . $pageUsersManagerPDO;
-    if (file_exists($pageUsersManagerPDO) && $pageUsersManagerPDO != 'index.php') {
+    if (file_exists($pageUsersManagerPDO) AND $pageUsersManagerPDO != 'index.php') {
         require($pageUsersManagerPDO);
     } else {
         throw new Exception('Vous naviguez dans l\'espace inconnu, il n\'y a rien dans cette zone...');
@@ -133,7 +133,7 @@ if (preg_match('/admin/', $pageNews)) {
     throw new Exception('Cette zone est réservée au personnel abilité uniquement');
 } else {
     $pageNews = 'Model/Entity/' . $pageNews;
-    if (file_exists($pageNews) && $pageNews != 'index.php') {
+    if (file_exists($pageNews) AND $pageNews != 'index.php') {
         require($pageNews);
     } else {
         throw new Exception('Vous naviguez dans l\'espace inconnu, il n\'y a rien dans cette zone...');
@@ -153,7 +153,7 @@ if (preg_match('/admin/', $pageComment)) {
     throw new Exception('Cette zone est réservée au personnel abilité uniquement');
 } else {
     $pageComment = 'Model/Entity/' . $pageComment;
-    if (file_exists($pageComment) && $pageComment != 'index.php') {
+    if (file_exists($pageComment) AND $pageComment != 'index.php') {
         require($pageComment);
     } else {
         throw new Exception('Vous naviguez dans l\'espace inconnu, il n\'y a rien dans cette zone...');
@@ -173,7 +173,7 @@ if (preg_match('/admin/', $pageUser)) {
     throw new Exception('Cette zone est réservée au personnel abilité uniquement');
 } else {
     $pageUser = 'Model/Entity/' . $pageUser;
-    if (file_exists($pageUser) && $pageUser != 'index.php') {
+    if (file_exists($pageUser) AND $pageUser != 'index.php') {
         require($pageUser);
     } else {
         throw new Exception('Vous naviguez dans l\'espace inconnu, il n\'y a rien dans cette zone...');
@@ -193,7 +193,7 @@ if (preg_match('/admin/', $pageDBFactory)) {
     throw new Exception('Cette zone est réservée au personnel abilité uniquement');
 } else {
     $pageDBFactory = 'Model/' . $pageDBFactory;
-    if (file_exists($pageDBFactory) && $pageDBFactory != 'index.php') {
+    if (file_exists($pageDBFactory) AND $pageDBFactory != 'index.php') {
         require($pageDBFactory);
     } else {
         throw new Exception('Vous naviguez dans l\'espace inconnu, il n\'y a rien dans cette zone...');
@@ -213,7 +213,7 @@ if (preg_match('/admin/', $pageSplClassLoader)) {
     throw new Exception('Cette zone est réservée au personnel abilité uniquement');
 } else {
     $pageSplClassLoader = 'Model/' . $pageSplClassLoader;
-    if (file_exists($pageSplClassLoader) && $pageSplClassLoader != 'index.php') {
+    if (file_exists($pageSplClassLoader) AND $pageSplClassLoader != 'index.php') {
         require($pageSplClassLoader);
     } else {
         throw new Exception('Vous naviguez dans l\'espace inconnu, il n\'y a rien dans cette zone...');
@@ -224,8 +224,8 @@ function home()
 {
     $db = DBFactory::getMysqlConnexionWithPDO();
 
-    $newsListManager = new NewsManagerPDO($db);
-    $newsList = $newsListManager->getListNews();
+    $homeManager = new NewsManagerPDO($db);
+    $newsHome = $homeManager->getHome();
 
     //require('View\header.php');
     if (empty($pageHeader)) {
@@ -240,7 +240,7 @@ function home()
         throw new Exception('Cette zone est réservée au personnel abilité uniquement');
     } else {
         $pageHeader = 'View/' . $pageHeader;
-        if (file_exists($pageHeader) && $pageHeader != 'index.php') {
+        if (file_exists($pageHeader) AND $pageHeader != 'index.php') {
             require($pageHeader);
         } else {
             throw new Exception('Vous naviguez dans l\'espace inconnu, il n\'y a rien dans cette zone...');
@@ -260,7 +260,7 @@ function home()
         throw new Exception('Cette zone est réservée au personnel abilité uniquement');
     } else {
         $pageNavigation = 'View/' . $pageNavigation;
-        if (file_exists($pageNavigation) && $pageNavigation != 'index.php') {
+        if (file_exists($pageNavigation) AND $pageNavigation != 'index.php') {
             require($pageNavigation);
         } else {
             throw new Exception('Vous naviguez dans l\'espace inconnu, il n\'y a rien dans cette zone...');
@@ -280,28 +280,116 @@ function home()
         throw new Exception('Cette zone est réservée au personnel abilité uniquement');
     } else {
         $pageFooter = 'View/' . $pageFooter;
-        if (file_exists($pageFooter) && $pageFooter != 'index.php') {
+        if (file_exists($pageFooter) AND $pageFooter != 'index.php') {
             require($pageFooter);
         } else {
             throw new Exception('Vous naviguez dans l\'espace inconnu, il n\'y a rien dans cette zone...');
         }
     }
 
-    //require('View\newsListView.php');
-    if (empty($pageNewsListView)) {
-        $pageNewsListView = 'newsListView';
-        $pageNewsListView = trim($pageNewsListView . '.php');
+    //require('View\home.php');
+    if (empty($pageHome)) {
+        $pageHome = 'home';
+        $pageHome = trim($pageHome . '.php');
     }
-    $pageNewsListView = str_replace('../', 'protect', $pageNewsListView);
-    $pageNewsListView = str_replace('..\\', 'protect', $pageNewsListView);
-    $pageNewsListView = str_replace(';', 'protect', $pageNewsListView);
-    $pageNewsListView = str_replace('%', 'protect', $pageNewsListView);
-    if (preg_match('/admin/', $pageNewsListView)) {
+    $pageHome = str_replace('../', 'protect', $pageHome);
+    $pageHome = str_replace('..\\', 'protect', $pageHome);
+    $pageHome = str_replace(';', 'protect', $pageHome);
+    $pageHome = str_replace('%', 'protect', $pageHome);
+    if (preg_match('/admin/', $pageHome)) {
         throw new Exception('Cette zone est réservée au personnel abilité uniquement');
     } else {
-        $pageNewsListView = 'View/' . $pageNewsListView;
-        if (file_exists($pageNewsListView) && $pageNewsListView != 'index.php') {
-            require($pageNewsListView);
+        $pageHome = 'View/' . $pageHome;
+        if (file_exists($pageHome) AND $pageHome != 'index.php') {
+            require($pageHome);
+        } else {
+            throw new Exception('Vous naviguez dans l\'espace inconnu, il n\'y a rien dans cette zone...');
+        }
+    }
+}
+
+function newsList()
+{
+    $db = DBFactory::getMysqlConnexionWithPDO();
+
+    $newsListManager = new NewsManagerPDO($db);
+    $newsList = $newsListManager->getListNews();
+
+    //require('View\header.php');
+    if (empty($pageHeader)) {
+        $pageHeader = 'header';
+        $pageHeader = trim($pageHeader . '.php');
+    }
+    $pageHeader = str_replace('../', 'protect', $pageHeader);
+    $pageHeader = str_replace('..\\', 'protect', $pageHeader);
+    $pageHeader = str_replace(';', 'protect', $pageHeader);
+    $pageHeader = str_replace('%', 'protect', $pageHeader);
+    if (preg_match('/admin/', $pageHeader)) {
+        throw new Exception('Cette zone est réservée au personnel abilité uniquement');
+    } else {
+        $pageHeader = 'View/' . $pageHeader;
+        if (file_exists($pageHeader) AND $pageHeader != 'index.php') {
+            require($pageHeader);
+        } else {
+            throw new Exception('Vous naviguez dans l\'espace inconnu, il n\'y a rien dans cette zone...');
+        }
+    }
+
+    //require('View\navigation.php');
+    if (empty($pageNavigation)) {
+        $pageNavigation = 'navigation';
+        $pageNavigation = trim($pageNavigation . '.php');
+    }
+    $pageNavigation = str_replace('../', 'protect', $pageNavigation);
+    $pageNavigation = str_replace('..\\', 'protect', $pageNavigation);
+    $pageNavigation = str_replace(';', 'protect', $pageNavigation);
+    $pageNavigation = str_replace('%', 'protect', $pageNavigation);
+    if (preg_match('/admin/', $pageNavigation)) {
+        throw new Exception('Cette zone est réservée au personnel abilité uniquement');
+    } else {
+        $pageNavigation = 'View/' . $pageNavigation;
+        if (file_exists($pageNavigation) AND $pageNavigation != 'index.php') {
+            require($pageNavigation);
+        } else {
+            throw new Exception('Vous naviguez dans l\'espace inconnu, il n\'y a rien dans cette zone...');
+        }
+    }
+
+    //require('View\footer.php');
+    if (empty($pageFooter)) {
+        $pageFooter = 'footer';
+        $pageFooter = trim($pageFooter . '.php');
+    }
+    $pageFooter = str_replace('../', 'protect', $pageFooter);
+    $pageFooter = str_replace('..\\', 'protect', $pageFooter);
+    $pageFooter = str_replace(';', 'protect', $pageFooter);
+    $pageFooter = str_replace('%', 'protect', $pageFooter);
+    if (preg_match('/admin/', $pageFooter)) {
+        throw new Exception('Cette zone est réservée au personnel abilité uniquement');
+    } else {
+        $pageFooter = 'View/' . $pageFooter;
+        if (file_exists($pageFooter) AND $pageFooter != 'index.php') {
+            require($pageFooter);
+        } else {
+            throw new Exception('Vous naviguez dans l\'espace inconnu, il n\'y a rien dans cette zone...');
+        }
+    }
+
+    //require('View\newsList.php');
+    if (empty($pageNewsList)) {
+        $pageNewsList = 'newsList';
+        $pageNewsList = trim($pageNewsList . '.php');
+    }
+    $pageNewsList = str_replace('../', 'protect', $pageNewsList);
+    $pageNewsList = str_replace('..\\', 'protect', $pageNewsList);
+    $pageNewsList = str_replace(';', 'protect', $pageNewsList);
+    $pageNewsList = str_replace('%', 'protect', $pageNewsList);
+    if (preg_match('/admin/', $pageNewsList)) {
+        throw new Exception('Cette zone est réservée au personnel abilité uniquement');
+    } else {
+        $pageNewsList = 'View/' . $pageNewsList;
+        if (file_exists($pageNewsList) AND $pageNewsList != 'index.php') {
+            require($pageNewsList);
         } else {
             throw new Exception('Vous naviguez dans l\'espace inconnu, il n\'y a rien dans cette zone...');
         }
@@ -331,7 +419,7 @@ function news()
         throw new Exception('Cette zone est réservée au personnel abilité uniquement');
     } else {
         $pageHeader = 'View/' . $pageHeader;
-        if (file_exists($pageHeader) && $pageHeader != 'index.php') {
+        if (file_exists($pageHeader) AND $pageHeader != 'index.php') {
             require($pageHeader);
         } else {
             throw new Exception('Vous naviguez dans l\'espace inconnu, il n\'y a rien dans cette zone...');
@@ -351,7 +439,7 @@ function news()
         throw new Exception('Cette zone est réservée au personnel abilité uniquement');
     } else {
         $pageNavigation = 'View/' . $pageNavigation;
-        if (file_exists($pageNavigation) && $pageNavigation != 'index.php') {
+        if (file_exists($pageNavigation) AND $pageNavigation != 'index.php') {
             require($pageNavigation);
         } else {
             throw new Exception('Vous naviguez dans l\'espace inconnu, il n\'y a rien dans cette zone...');
@@ -371,28 +459,28 @@ function news()
         throw new Exception('Cette zone est réservée au personnel abilité uniquement');
     } else {
         $pageFooter = 'View/' . $pageFooter;
-        if (file_exists($pageFooter) && $pageFooter != 'index.php') {
+        if (file_exists($pageFooter) AND $pageFooter != 'index.php') {
             require($pageFooter);
         } else {
             throw new Exception('Vous naviguez dans l\'espace inconnu, il n\'y a rien dans cette zone...');
         }
     }
 
-    //require('View\newsView.php');
-    if (empty($pageNewsView)) {
-        $pageNewsView = 'newsView';
-        $pageNewsView = trim($pageNewsView . '.php');
+    //require('View\news.php');
+    if (empty($pageNews)) {
+        $pageNews = 'news';
+        $pageNews = trim($pageNews . '.php');
     }
-    $pageNewsView = str_replace('../', 'protect', $pageNewsView);
-    $pageNewsView = str_replace('..\\', 'protect', $pageNewsView);
-    $pageNewsView = str_replace(';', 'protect', $pageNewsView);
-    $pageNewsView = str_replace('%', 'protect', $pageNewsView);
-    if (preg_match('/admin/', $pageNewsView)) {
+    $pageNews = str_replace('../', 'protect', $pageNews);
+    $pageNews = str_replace('..\\', 'protect', $pageNews);
+    $pageNews = str_replace(';', 'protect', $pageNews);
+    $pageNews = str_replace('%', 'protect', $pageNews);
+    if (preg_match('/admin/', $pageNews)) {
         throw new Exception('Cette zone est réservée au personnel abilité uniquement');
     } else {
-        $pageNewsView = 'View/' . $pageNewsView;
-        if (file_exists($pageNewsView) && $pageNewsView != 'index.php') {
-            require($pageNewsView);
+        $pageNews = 'View/' . $pageNews;
+        if (file_exists($pageNews) AND $pageNews != 'index.php') {
+            require($pageNews);
         } else {
             throw new Exception('Vous naviguez dans l\'espace inconnu, il n\'y a rien dans cette zone...');
         }
@@ -401,7 +489,7 @@ function news()
 
 function connexion()
 {
-    $pseudo = $_POST['pseudo'];
+    $pseudo = $_POST['username'];
     $passwordHash = $_POST['password'];
 
     $db = DBFactory::getMysqlConnexionWithPDO();
@@ -436,7 +524,7 @@ function inscription()
         throw new Exception('Cette zone est réservée au personnel abilité uniquement');
     } else {
         $pageHeader = 'View/' . $pageHeader;
-        if (file_exists($pageHeader) && $pageHeader != 'index.php') {
+        if (file_exists($pageHeader) AND $pageHeader != 'index.php') {
             require($pageHeader);
         } else {
             throw new Exception('Vous naviguez dans l\'espace inconnu, il n\'y a rien dans cette zone...');
@@ -456,7 +544,7 @@ function inscription()
         throw new Exception('Cette zone est réservée au personnel abilité uniquement');
     } else {
         $pageNavigation = 'View/' . $pageNavigation;
-        if (file_exists($pageNavigation) && $pageNavigation != 'index.php') {
+        if (file_exists($pageNavigation) AND $pageNavigation != 'index.php') {
             require($pageNavigation);
         } else {
             throw new Exception('Vous naviguez dans l\'espace inconnu, il n\'y a rien dans cette zone...');
@@ -476,28 +564,28 @@ function inscription()
         throw new Exception('Cette zone est réservée au personnel abilité uniquement');
     } else {
         $pageFooter = 'View/' . $pageFooter;
-        if (file_exists($pageFooter) && $pageFooter != 'index.php') {
+        if (file_exists($pageFooter) AND $pageFooter != 'index.php') {
             require($pageFooter);
         } else {
             throw new Exception('Vous naviguez dans l\'espace inconnu, il n\'y a rien dans cette zone...');
         }
     }
 
-    //require('View\inscriptionView.php');
-    if (empty($pageInscriptionView)) {
-        $pageInscriptionView = 'inscriptionView';
-        $pageInscriptionView = trim($pageInscriptionView . '.php');
+    //require('View\inscription.php');
+    if (empty($pageInscription)) {
+        $pageInscription = 'inscription';
+        $pageInscription = trim($pageInscription . '.php');
     }
-    $pageInscriptionView = str_replace('../', 'protect', $pageInscriptionView);
-    $pageInscriptionView = str_replace('..\\', 'protect', $pageInscriptionView);
-    $pageInscriptionView = str_replace(';', 'protect', $pageInscriptionView);
-    $pageInscriptionView = str_replace('%', 'protect', $pageInscriptionView);
-    if (preg_match('/admin/', $pageInscriptionView)) {
+    $pageInscription = str_replace('../', 'protect', $pageInscription);
+    $pageInscription = str_replace('..\\', 'protect', $pageInscription);
+    $pageInscription = str_replace(';', 'protect', $pageInscription);
+    $pageInscription = str_replace('%', 'protect', $pageInscription);
+    if (preg_match('/admin/', $pageInscription)) {
         throw new Exception('Cette zone est réservée au personnel abilité uniquement');
     } else {
-        $pageInscriptionView = 'View/' . $pageInscriptionView;
-        if (file_exists($pageInscriptionView) && $pageInscriptionView != 'index.php') {
-            require($pageInscriptionView);
+        $pageInscription = 'View/' . $pageInscription;
+        if (file_exists($pageInscription) AND $pageInscription != 'index.php') {
+            require($pageInscription);
         } else {
             throw new Exception('Vous naviguez dans l\'espace inconnu, il n\'y a rien dans cette zone...');
         }
@@ -506,9 +594,9 @@ function inscription()
 
 function addUser()
 {
-    $pseudo = $_POST['pseudoInscription'];
+    $pseudo = $_POST['username'];
 
-    $password = password_hash($_POST['passwordInscription'], PASSWORD_DEFAULT);
+    $password = password_hash($_POST['password'], PASSWORD_DEFAULT);
 
     $db = DBFactory::getMysqlConnexionWithPDO();
 
@@ -541,7 +629,7 @@ function contact()
         throw new Exception('Cette zone est réservée au personnel abilité uniquement');
     } else {
         $pageHeader = 'View/' . $pageHeader;
-        if (file_exists($pageHeader) && $pageHeader != 'index.php') {
+        if (file_exists($pageHeader) AND $pageHeader != 'index.php') {
             require($pageHeader);
         } else {
             throw new Exception('Vous naviguez dans l\'espace inconnu, il n\'y a rien dans cette zone...');
@@ -561,7 +649,7 @@ function contact()
         throw new Exception('Cette zone est réservée au personnel abilité uniquement');
     } else {
         $pageNavigation = 'View/' . $pageNavigation;
-        if (file_exists($pageNavigation) && $pageNavigation != 'index.php') {
+        if (file_exists($pageNavigation) AND $pageNavigation != 'index.php') {
             require($pageNavigation);
         } else {
             throw new Exception('Vous naviguez dans l\'espace inconnu, il n\'y a rien dans cette zone...');
@@ -581,28 +669,28 @@ function contact()
         throw new Exception('Cette zone est réservée au personnel abilité uniquement');
     } else {
         $pageFooter = 'View/' . $pageFooter;
-        if (file_exists($pageFooter) && $pageFooter != 'index.php') {
+        if (file_exists($pageFooter) AND $pageFooter != 'index.php') {
             require($pageFooter);
         } else {
             throw new Exception('Vous naviguez dans l\'espace inconnu, il n\'y a rien dans cette zone...');
         }
     }
 
-    //require('View\contactView.php');
-    if (empty($pageContactView)) {
-        $pageContactView = 'contactView';
-        $pageContactView = trim($pageContactView . '.php');
+    //require('View\contact.php');
+    if (empty($pageContact)) {
+        $pageContact = 'contact';
+        $pageContact = trim($pageContact . '.php');
     }
-    $pageContactView = str_replace('../', 'protect', $pageContactView);
-    $pageContactView = str_replace('..\\', 'protect', $pageContactView);
-    $pageContactView = str_replace(';', 'protect', $pageContactView);
-    $pageContactView = str_replace('%', 'protect', $pageContactView);
-    if (preg_match('/admin/', $pageContactView)) {
+    $pageContact = str_replace('../', 'protect', $pageContact);
+    $pageContact = str_replace('..\\', 'protect', $pageContact);
+    $pageContact = str_replace(';', 'protect', $pageContact);
+    $pageContact = str_replace('%', 'protect', $pageContact);
+    if (preg_match('/admin/', $pageContact)) {
         throw new Exception('Cette zone est réservée au personnel abilité uniquement');
     } else {
-        $pageContactView = 'View/' . $pageContactView;
-        if (file_exists($pageContactView) && $pageContactView != 'index.php') {
-            require($pageContactView);
+        $pageContact = 'View/' . $pageContact;
+        if (file_exists($pageContact) AND $pageContact != 'index.php') {
+            require($pageContact);
         } else {
             throw new Exception('Vous naviguez dans l\'espace inconnu, il n\'y a rien dans cette zone...');
         }
@@ -614,24 +702,24 @@ function sendMessage()
     if(!isset($_SESSION)) {
         session_start();
     }
-    $mail = 'Arcturus.Morea@gmx.com';
+    $emailSite = 'Arcturus.Morea@gmx.com';
 
-    if (!preg_match("#^[a-z0-9._-]+@(hotmail|live|msn).[a-z]{2,4}$#", $mail)) {
+    if (!preg_match("#^[a-z0-9._-]+@(hotmail|live|msn).[a-z]{2,4}$#", $emailSite)) {
         $break = "\r\n";
     }
     else {
         $break = "\n";
     }
 
-    $emailContact = $_POST['emailContact'];
+    $email = $_POST['email'];
     $subject = $_POST['subjectContact'];
     $message_txt = $_POST['messageContact'];
     $message_html = $_POST['messageContact'];
 
     $boundary = '-----='.md5(rand());
 
-    $header = 'From: "' . $_SESSION['rank'] . ' ' . $_SESSION['pseudo'] . '" <' .$emailContact. '>'.$break;
-    $header.= 'Reply-to: "' . $_SESSION['rank'] . ' ' . $_SESSION['pseudo'] . '" <' .$emailContact. '>'.$break;
+    $header = 'From: "' . $_SESSION['rank'] . ' ' . $_SESSION['pseudo'] . '" <' .$email. '>'.$break;
+    $header.= 'Reply-to: "' . $_SESSION['rank'] . ' ' . $_SESSION['pseudo'] . '" <' .$email. '>'.$break;
     $header.= 'MIME-Version: 1.0'.$break;
     $header.= 'Content-Type: multipart/alternative;' .$break. ' boundary="$boundary"' .$break;
 
@@ -652,5 +740,5 @@ function sendMessage()
     $message.= $break.'--'.$boundary.'--'.$break;
     $message.= $break.'--'.$boundary.'--'.$break;
 
-    mail($mail,$subject,$message,$header);
+    mail($emailSite,$subject,$message,$header);
 }
