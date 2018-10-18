@@ -1,35 +1,46 @@
 <?php
-$title = htmlspecialchars('Mon blog');
+$title = htmlspecialchars('Arcturus Morea Home');
 
 ob_start(); ?>
-    <section class="news">
-        <p>Dernières News :</p>
+    <section>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 title-home-text">
+                    <img src="Public/Images/title-icon2.png">
+                    COMM-LINK /
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-12 flipboard-boxes flipboard-list-news">
+                    <div class="row justify-content-center">
+                        <?php
+                        foreach ($newsList as $news) { ?>
+                            <div class="col-lg-4 card-newslist">
+                                <div class="card-newslist-body">
 
-        <?php
-        foreach ($newsList as $news) {
+                                    <div id="upper_left-news"></div>
+                                    <div id="upper_right-news"></div>
+                                    <div id="lower_left-news"></div>
+                                    <div id="lower_right-news"></div>
 
-            if (strlen($news->content_news()) <= 200) {
-                $content_news = $news->content_news();
-            } else {
-                $start = substr($news->content_news(), 0, 200);
-                $start = substr($start, 0, strrpos($start, ' ')) . ' ...';
-                $content_news = $start;
-            } ?>
-            <h3><?php echo '<a href="index.php?action=news&amp;id=' . htmlspecialchars($news->id_news()) . '">' . $news->title() . '</a>'; ?></h3>
-
-            <p><?php
-            echo nl2br(htmlspecialchars($content_news))
-            ?></p><?php
-            ?><h4>Ecrit par :<br><?php
-            echo htmlspecialchars($news->rank_user()) ?><br><?php
-            echo htmlspecialchars($news->pseudo_user()) ?><br>
-            Le <em><?php echo htmlspecialchars($news->dateAdd_news()->format('d-m-Y H:i')) ?></em>
-            <?php
-            if ($news->dateAdd_news() != $news->dateEdit_news()) {
-                ?> - Modifié le
-                <em><?php echo htmlspecialchars($news->dateEdit_news()->format('d-m-Y H:i')) ?></em><?php
-            } ?></h4><?php
-        } ?>
+                                    <h4 class="card-newslist-subtitle">TYPE / <span class="type-group">TRANSMISSION /</span></h4>
+                                    <h3 class="card-newslist-title"><?php echo htmlspecialchars($news->title()); ?></h3>
+                                    <p class="card-newslist-text">
+                                        <?php echo '<a class="card-link" href="index.php?action=news&amp;id=' . htmlspecialchars($news->id_news()) . '">>>> Lire</a>'; ?>
+                                    </p>
+                                </div>
+                                <div class="card-newslist-footer">
+                                    <?php
+                                    echo htmlspecialchars($news->rank_user()) . ' ';
+                                    echo htmlspecialchars($news->pseudo_user()); ?><br>
+                                    <?php echo htmlspecialchars($news->dateAdd_news()->format('d F, Y')); ?>
+                                </div>
+                            </div>
+                        <?php } ?>
+                    </div>
+                </div>
+            </div>
+        </div>
     </section>
 <?php $content = ob_get_clean();
 
