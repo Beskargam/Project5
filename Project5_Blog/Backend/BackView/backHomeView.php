@@ -4,12 +4,33 @@ $title = htmlspecialchars('Zone d\'Administration');
 
 ob_start(); ?>
     <section class="home">
-        <p>
-        <h2>Vous êtes dans le home</h2>
-        <a href="backIndex.php?action=newsList">Liste des News</a> <br>
-        <a href="backIndex.php?action=commentsValidationList">Liste des commentaires pour validation</a> <br>
-        <a href="backIndex.php?action=usersList">Liste des Membres</a>
-        </p>
+        <div class="container">
+            <div class="col-lg-12 flipboard-boxes flipboard-latest-news">
+                <div class="row justify-content-center">
+                    <div class="card-latestnews">
+                        <div class="card-latestnews-body">
+
+                            <div id="upper_left-corner"></div>
+                            <div id="upper_right-corner"></div>
+                            <div id="lower_left-corner"></div>
+                            <div id="lower_right-corner"></div>
+
+                            <h4 class="card-latestnews-subtitle">TYPE / <span class="type-group">OPTIONS /</span></h4>
+                            <h3 class="card-latestnews-title">HOME</h3>
+                            <p class="card-latestnews-text">
+                            <ul>
+                                <li><a href="backIndex.php?action=newsList">Liste des News</a></li>
+                                <li><a href="backIndex.php?action=commentsValidationList">Liste des commentaires pour
+                                        validation</a>
+                                </li>
+                                <li><a href="backIndex.php?action=usersList">Liste des Membres</a></li>
+                            </ul>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </section>
 <?php $content = ob_get_clean();
 
