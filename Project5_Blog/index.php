@@ -25,36 +25,50 @@ try {
 
     if (isset($_GET['action'])) {
         if ($_GET['action'] == 'home') {
+            if (isset($_POST['username']) AND isset($_POST['password'])) {
+                connexion();
+            }
             home();
+        } elseif ($_GET['action'] == 'newsList') {
+            if (isset($_POST['username']) AND isset($_POST['password'])) {
+                connexion();
+            }
+            newsList();
         } elseif ($_GET['action'] == 'news') {
             if (isset($_GET['id']) AND $_GET['id'] > 0) {
+                if (isset($_POST['username']) AND isset($_POST['password'])) {
+                    connexion();
+                }
+                news();
                 if (isset($_POST['addCommentary'])) {
                     addComment();
                 }
-                news();
             } else {
                 throw new Exception('Erreur : L\'identifiant du saut quantum n\'a pas été envoyé');
             }
         } elseif ($_GET['action'] == 'inscription') {
-            if (isset($_POST['pseudoInscription']) AND isset($_POST['passwordInscription'])) {
-                addUser();
-                home();
-            } else {
-                inscription();
+            if (isset($_POST['username']) AND isset($_POST['password'])) {
+                connexion();
             }
+            if (isset($_POST['username']) AND isset($_POST['newpassword'])) {
+                addUser();
+            }
+            inscription();
         } elseif ($_GET['action'] == 'contact') {
             if (isset($_POST['emailContact']) AND isset($_POST['subjectContact']) AND isset($_POST['messageContact'])) {
                 sendMessage();
-                home();
             }
             else {
+                if (isset($_POST['username']) AND isset($_POST['password'])) {
+                    connexion();
+                }
                 contact();
             }
         } else {
             throw new Exception('Erreur : L\'URL a détecté une anomalie interne');
         }
     } else {
-        if (isset($_POST['pseudo']) AND isset($_POST['password'])) {
+        if (isset($_POST['username']) AND isset($_POST['password'])) {
             connexion();
         }
         home();

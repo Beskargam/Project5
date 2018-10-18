@@ -1,13 +1,25 @@
 <?php
 
 ob_start(); ?>
-    <navigation>
-        <div>
-            <a href="index.php?action=home">Home</a><br>
-            <a href="index.php?action=contact">Nous contacter</a><br>
-            <a href="Public/Files/WomenAtWork.pdf" download="Public/Files/WomenAtWork.pdf">Télécharger le CV (PDF)</a><br>
-            <a href="https://www.facebook.com/arcturus.morea.3">Facebook</a><br>
-            <a href="https://twitter.com/ArcturusMorea?lang=fr">Twitter</a>
+    <nav class="navbar navbar-expand-md justify-content-center">
+        <div class="row">
+            <a class="navbar-brand" href="index.php?action=home"><img src="Public/Images/logo.png" width="107"
+                                                                      height="50" alt=""></a>
+
+            <button class="navbar-toggler custom-toggler collapsed" type="button" data-toggle="collapse"
+                    data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                    aria-label="Toggle navigation">
+                <span class="toggler-color"><span class="oi oi-menu"></span></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item"><a class="nav-link" href="index.php?action=home">HOME</a></li>
+                    <li class="nav-item"><a class="nav-link" href="index.php?action=newsList">COMM-LINK</a></li>
+                    <li class="nav-item"><a class="nav-link" href="index.php?action=contact">CONTACTS</a></li>
+                    <li class="nav-item"><a class="nav-link" href="Public/Files/WomenAtWork.pdf">CV (PDF)</a></li>
+                </ul>
+            </div>
         </div>
-    </navigation>
+    </nav>
 <?php $navigation = ob_get_clean();

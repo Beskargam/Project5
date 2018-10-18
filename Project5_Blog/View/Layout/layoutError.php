@@ -11,7 +11,6 @@
     <title><?= $title ?></title>
 </head>
 <body class="page-bg">
-<?= $header ?>
 <?= $navigation ?>
 <?= $content ?>
 <?= $footer ?>

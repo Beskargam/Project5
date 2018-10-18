@@ -5,12 +5,13 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="Public/Css/bootstrap.css" rel="stylesheet">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/open-iconic/1.1.1/font/css/open-iconic-bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/open-iconic/1.1.1/font/css/open-iconic-bootstrap.min.css"
+          rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Electrolize" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Orbitron" rel="stylesheet">
     <title><?= $title ?></title>
 </head>
-<body class="page-bg">
+<body class="home-bg">
 <?= $header ?>
 <?= $navigation ?>
 <?= $content ?>

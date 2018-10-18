@@ -4,29 +4,26 @@ $title = htmlspecialchars('Erreur');
 ?>
 
 <?php ob_start(); ?>
-    <p><a href="index.php?action=home">Retour à l\'accueil</a></p>
-    <h3><?php echo htmlspecialchars('' . $errorMessage) ?></h3>
-<?php $content = ob_get_clean();
+    <section>
+        <div class="container flipboard-boxes flipboard-error">
+            <div class="col-lg-12 card-error">
+                <div class="card-error-body">
 
-//require('View\Frontend\header.php');
-if (empty($pageHeader)) {
-    $pageHeader = 'header';
-    $pageHeader = trim($pageHeader . '.php');
-}
-$pageHeader = str_replace('../', 'protect', $pageHeader);
-$pageHeader = str_replace('..\\', 'protect', $pageHeader);
-$pageHeader = str_replace(';', 'protect', $pageHeader);
-$pageHeader = str_replace('%', 'protect', $pageHeader);
-if (preg_match('/admin/', $pageHeader)) {
-    throw new Exception('Cette zone est réservée au personnel abilité uniquement');
-} else {
-    $pageHeader = 'View/' . $pageHeader;
-    if (file_exists($pageHeader) && $pageHeader != 'index.php') {
-        require($pageHeader);
-    } else {
-        throw new Exception('Vous naviguez dans l\'espace inconnu, il n\'y a rien dans cette zone...');
-    }
-}
+                    <div id="upper_left-corner"></div>
+                    <div id="upper_right-corner"></div>
+                    <div id="lower_left-corner"></div>
+                    <div id="lower_right-corner"></div>
+
+                    <h4 class="card-error-subtitle">TYPE / <span class="post-group">MESSAGE</span></h4>
+                    <h3 class="card-error-title"><?php echo htmlspecialchars('' . $errorMessage) ?></h3>
+                    <p class="card-error-text">
+                        Il est inutile d'appeler un Anvil Crucible Pour ça...
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+<?php $content = ob_get_clean();
 
 //require('View\navigation.php');
 if (empty($pageNavigation)) {
@@ -68,21 +65,21 @@ if (preg_match('/admin/', $pageFooter)) {
     }
 }
 
-//require('View\Layout\layout.php');
-if (empty($pageLayout)) {
-    $pageLayout = 'layout';
-    $pageLayout = trim($pageLayout . '.php');
+//require('View\Layout\layoutError.php');
+if (empty($pageLayoutError)) {
+    $pageLayoutError = 'layoutError';
+    $pageLayoutError = trim($pageLayoutError . '.php');
 }
-$pageLayout = str_replace('../', 'protect', $pageLayout);
-$pageLayout = str_replace('..\\', 'protect', $pageLayout);
-$pageLayout = str_replace(';', 'protect', $pageLayout);
-$pageLayout = str_replace('%', 'protect', $pageLayout);
-if (preg_match('/admin/', $pageLayout)) {
+$pageLayoutError = str_replace('../', 'protect', $pageLayoutError);
+$pageLayoutError = str_replace('..\\', 'protect', $pageLayoutError);
+$pageLayoutError = str_replace(';', 'protect', $pageLayoutError);
+$pageLayoutError = str_replace('%', 'protect', $pageLayoutError);
+if (preg_match('/admin/', $pageLayoutError)) {
     throw new Exception('Cette zone est réservée au personnel abilité uniquement');
 } else {
-    $pageLayout = 'View/Layout/' . $pageLayout;
-    if (file_exists($pageLayout) && $pageLayout != 'index.php') {
-        require($pageLayout);
+    $pageLayoutError = 'View/Layout/' . $pageLayoutError;
+    if (file_exists($pageLayoutError) && $pageLayoutError != 'index.php') {
+        require($pageLayoutError);
     } else {
         throw new Exception('Vous naviguez dans l\'espace inconnu, il n\'y a rien dans cette zone...');
     }

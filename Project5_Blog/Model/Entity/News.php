@@ -5,6 +5,7 @@ class News
     private $id_news;
     private $pseudo_user;
     private $rank_user;
+    private $intro;
     private $title;
     private $content_news;
     private $dateAdd_news;
@@ -46,6 +47,11 @@ class News
         return $this->rank_user;
     }
 
+    public function intro()
+    {
+        return $this->intro;
+    }
+
     public function title()
     {
         return $this->title;
@@ -80,6 +86,11 @@ class News
     public function setRank_user($rank_user)
     {
         $this->rank_user = $rank_user;
+    }
+
+    public function setIntro($intro)
+    {
+        $this->intro = $intro;
     }
 
     public function setTitle($title)
