@@ -6,6 +6,7 @@ class BackNews
     private $pseudo_user;
     private $rank_user;
     private $title;
+    private $intro;
     private $content_news;
     private $dateAdd_news;
     private $dateEdit_news;
@@ -51,6 +52,11 @@ class BackNews
         return $this->title;
     }
 
+    public function intro()
+    {
+        return $this->intro;
+    }
+
     public function content_news()
     {
         return $this->content_news;
@@ -85,6 +91,11 @@ class BackNews
     public function setTitle($title)
     {
         $this->title = $title;
+    }
+
+    public function setIntro($intro)
+    {
+        $this->intro = $intro;
     }
 
     public function setContent_news($content_news)
