@@ -1,5 +1,5 @@
 <?php
-$title = htmlspecialchars('Arcturus Morea Home');
+$title = htmlspecialchars('COMM-LINKS');
 
 ob_start(); ?>
     <section>
@@ -7,7 +7,7 @@ ob_start(); ?>
             <div class="row">
                 <div class="col-lg-12 title-home-text">
                     <img src="Public/Images/title-icon2.png">
-                    COMM-LINK /
+                    COMM-LINKS /
                 </div>
             </div>
             <div class="row">
