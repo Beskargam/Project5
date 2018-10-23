@@ -15,7 +15,7 @@ ob_start(); ?>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item"><a class="nav-link" href="index.php?action=home">HOME</a></li>
-                    <li class="nav-item"><a class="nav-link" href="index.php?action=newsList">COMM-LINK</a></li>
+                    <li class="nav-item"><a class="nav-link" href="index.php?action=newslist">COMM-LINK</a></li>
                     <li class="nav-item"><a class="nav-link" href="index.php?action=contact">CONTACTS</a></li>
                     <li class="nav-item"><a class="nav-link" href="Public/Files/WomenAtWork.pdf">CV (PDF)</a></li>
                 </ul>
