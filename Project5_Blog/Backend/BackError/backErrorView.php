@@ -25,7 +25,7 @@ $title = htmlspecialchars('Erreur');
     </section>
 <?php $content = ob_get_clean();
 
-//require('backView\backFrontend\backHeader.php');
+//require('BackView\backFrontend\backHeader.php');
 if (empty($pageBackHeader)) {
     $pageBackHeader = 'backHeader';
     $pageBackHeader = trim($pageBackHeader . '.php');
@@ -37,7 +37,7 @@ $pageBackHeader = str_replace('%', 'protect', $pageBackHeader);
 if (preg_match('/admin/', $pageBackHeader)) {
     throw new Exception('Cette zone est réservée au personnel abilité uniquement');
 } else {
-    $pageBackHeader = 'backView/' . $pageBackHeader;
+    $pageBackHeader = 'BackView/' . $pageBackHeader;
     if (file_exists($pageBackHeader) && $pageBackHeader != 'backIndex.php') {
         require($pageBackHeader);
     } else {
@@ -45,7 +45,7 @@ if (preg_match('/admin/', $pageBackHeader)) {
     }
 }
 
-//require('backView\backFrontend\backFooter.php');
+//require('BackView\backFrontend\backFooter.php');
 if (empty($pageBackFooter)) {
     $pageBackFooter = 'backFooter';
     $pageBackFooter = trim($pageBackFooter . '.php');
@@ -57,7 +57,7 @@ $pageBackFooter = str_replace('%', 'protect', $pageBackFooter);
 if (preg_match('/admin/', $pageBackFooter)) {
     throw new Exception('Cette zone est réservée au personnel abilité uniquement');
 } else {
-    $pageBackFooter = 'backView/' . $pageBackFooter;
+    $pageBackFooter = 'BackView/' . $pageBackFooter;
     if (file_exists($pageBackFooter) && $pageBackFooter != 'backIndex.php') {
         require($pageBackFooter);
     } else {
@@ -65,7 +65,7 @@ if (preg_match('/admin/', $pageBackFooter)) {
     }
 }
 
-//require('backView\backLayout\backLayout.php');
+//require('BackView\backLayout\backLayout.php');
 if (empty($pageBackLayout)) {
     $pageBackLayout = 'backLayout';
     $pageBackLayout = trim($pageBackLayout . '.php');
@@ -77,7 +77,7 @@ $pageBackLayout = str_replace('%', 'protect', $pageBackLayout);
 if (preg_match('/admin/', $pageBackLayout)) {
     throw new Exception('Cette zone est réservée au personnel abilité uniquement');
 } else {
-    $pageBackLayout = 'backView/backLayout/' . $pageBackLayout;
+    $pageBackLayout = 'BackView/backLayout/' . $pageBackLayout;
     if (file_exists($pageBackLayout) && $pageBackLayout != 'backIndex.php') {
         require($pageBackLayout);
     } else {
