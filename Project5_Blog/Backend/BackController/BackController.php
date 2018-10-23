@@ -12,7 +12,7 @@ $pageBackNewsManager = str_replace('%', 'protect', $pageBackNewsManager);
 if (preg_match('/admin/', $pageBackNewsManager)) {
     throw new Exception('Cette zone est réservée au personnel abilité uniquement');
 } else {
-    $pageBackNewsManager = 'backModel/' . $pageBackNewsManager;
+    $pageBackNewsManager = 'BackModel/' . $pageBackNewsManager;
     if (file_exists($pageBackNewsManager) && $pageBackNewsManager != 'backIndex.php') {
         require($pageBackNewsManager);
     } else {
@@ -32,7 +32,7 @@ $pageBackCommentsManager = str_replace('%', 'protect', $pageBackCommentsManager)
 if (preg_match('/admin/', $pageBackCommentsManager)) {
     throw new Exception('Cette zone est réservée au personnel abilité uniquement');
 } else {
-    $pageBackCommentsManager = 'backModel/' . $pageBackCommentsManager;
+    $pageBackCommentsManager = 'BackModel/' . $pageBackCommentsManager;
     if (file_exists($pageBackCommentsManager) && $pageBackCommentsManager != 'backIndex.php') {
         require($pageBackCommentsManager);
     } else {
@@ -52,7 +52,7 @@ $pageBackUsersManager = str_replace('%', 'protect', $pageBackUsersManager);
 if (preg_match('/admin/', $pageBackUsersManager)) {
     throw new Exception('Cette zone est réservée au personnel abilité uniquement');
 } else {
-    $pageBackUsersManager = 'backModel/' . $pageBackUsersManager;
+    $pageBackUsersManager = 'BackModel/' . $pageBackUsersManager;
     if (file_exists($pageBackUsersManager) && $pageBackUsersManager != 'backIndex.php') {
         require($pageBackUsersManager);
     } else {
@@ -72,7 +72,7 @@ $pageBackNewsManagerPDO = str_replace('%', 'protect', $pageBackNewsManagerPDO);
 if (preg_match('/admin/', $pageBackNewsManagerPDO)) {
     throw new Exception('Cette zone est réservée au personnel abilité uniquement');
 } else {
-    $pageBackNewsManagerPDO = 'backModel/' . $pageBackNewsManagerPDO;
+    $pageBackNewsManagerPDO = 'BackModel/' . $pageBackNewsManagerPDO;
     if (file_exists($pageBackNewsManagerPDO) && $pageBackNewsManagerPDO != 'backIndex.php') {
         require($pageBackNewsManagerPDO);
     } else {
@@ -92,7 +92,7 @@ $pageBackCommentsManagerPDO = str_replace('%', 'protect', $pageBackCommentsManag
 if (preg_match('/admin/', $pageBackCommentsManagerPDO)) {
     throw new Exception('Cette zone est réservée au personnel abilité uniquement');
 } else {
-    $pageBackCommentsManagerPDO = 'backModel/' . $pageBackCommentsManagerPDO;
+    $pageBackCommentsManagerPDO = 'BackModel/' . $pageBackCommentsManagerPDO;
     if (file_exists($pageBackCommentsManagerPDO) && $pageBackCommentsManagerPDO != 'backIndex.php') {
         require($pageBackCommentsManagerPDO);
     } else {
@@ -112,7 +112,7 @@ $pageBackUsersManagerPDO = str_replace('%', 'protect', $pageBackUsersManagerPDO)
 if (preg_match('/admin/', $pageBackUsersManagerPDO)) {
     throw new Exception('Cette zone est réservée au personnel abilité uniquement');
 } else {
-    $pageBackUsersManagerPDO = 'backModel/' . $pageBackUsersManagerPDO;
+    $pageBackUsersManagerPDO = 'BackModel/' . $pageBackUsersManagerPDO;
     if (file_exists($pageBackUsersManagerPDO) && $pageBackUsersManagerPDO != 'backIndex.php') {
         require($pageBackUsersManagerPDO);
     } else {
@@ -132,7 +132,7 @@ $pageBackNews = str_replace('%', 'protect', $pageBackNews);
 if (preg_match('/admin/', $pageBackNews)) {
     throw new Exception('Cette zone est réservée au personnel abilité uniquement');
 } else {
-    $pageBackNews = 'backModel/backEntity/' . $pageBackNews;
+    $pageBackNews = 'BackModel/backEntity/' . $pageBackNews;
     if (file_exists($pageBackNews) && $pageBackNews != 'backIndex.php') {
         require($pageBackNews);
     } else {
@@ -152,7 +152,7 @@ $pageBackComment = str_replace('%', 'protect', $pageBackComment);
 if (preg_match('/admin/', $pageBackComment)) {
     throw new Exception('Cette zone est réservée au personnel abilité uniquement');
 } else {
-    $pageBackComment = 'backModel/backEntity/' . $pageBackComment;
+    $pageBackComment = 'BackModel/backEntity/' . $pageBackComment;
     if (file_exists($pageBackComment) && $pageBackComment != 'backIndex.php') {
         require($pageBackComment);
     } else {
@@ -172,7 +172,7 @@ $pageBackUser = str_replace('%', 'protect', $pageBackUser);
 if (preg_match('/admin/', $pageBackUser)) {
     throw new Exception('Cette zone est réservée au personnel abilité uniquement');
 } else {
-    $pageBackUser = 'backModel/backEntity/' . $pageBackUser;
+    $pageBackUser = 'BackModel/backEntity/' . $pageBackUser;
     if (file_exists($pageBackUser) && $pageBackUser != 'backIndex.php') {
         require($pageBackUser);
     } else {
@@ -192,7 +192,7 @@ $pageBackDBFactory = str_replace('%', 'protect', $pageBackDBFactory);
 if (preg_match('/admin/', $pageBackDBFactory)) {
     throw new Exception('Cette zone est réservée au personnel abilité uniquement');
 } else {
-    $pageBackDBFactory = 'backModel/' . $pageBackDBFactory;
+    $pageBackDBFactory = 'BackModel/' . $pageBackDBFactory;
     if (file_exists($pageBackDBFactory) && $pageBackDBFactory != 'backIndex.php') {
         require($pageBackDBFactory);
     } else {
@@ -202,7 +202,7 @@ if (preg_match('/admin/', $pageBackDBFactory)) {
 
 function home()
 {
-    //require('backView\backHeader.php');
+    //require('BackView\backHeader.php');
     if (empty($pageBackHeader)) {
         $pageBackHeader = 'backHeader';
         $pageBackHeader = trim($pageBackHeader . '.php');
@@ -214,7 +214,7 @@ function home()
     if (preg_match('/admin/', $pageBackHeader)) {
         throw new Exception('Cette zone est réservée au personnel abilité uniquement');
     } else {
-        $pageBackHeader = 'backView/' . $pageBackHeader;
+        $pageBackHeader = 'BackView/' . $pageBackHeader;
         if (file_exists($pageBackHeader) && $pageBackHeader != 'backIndex.php') {
             require($pageBackHeader);
         } else {
@@ -222,7 +222,7 @@ function home()
         }
     }
 
-    //require('backView\backFooter.php');
+    //require('BackView\backFooter.php');
     if (empty($pageBackFooter)) {
         $pageBackFooter = 'backFooter';
         $pageBackFooter = trim($pageBackFooter . '.php');
@@ -234,7 +234,7 @@ function home()
     if (preg_match('/admin/', $pageBackFooter)) {
         throw new Exception('Cette zone est réservée au personnel abilité uniquement');
     } else {
-        $pageBackFooter = 'backView/' . $pageBackFooter;
+        $pageBackFooter = 'BackView/' . $pageBackFooter;
         if (file_exists($pageBackFooter) && $pageBackFooter != 'backIndex.php') {
             require($pageBackFooter);
         } else {
@@ -242,7 +242,7 @@ function home()
         }
     }
 
-    //require('backView\backHomeView.php');
+    //require('BackView\backHomeView.php');
     if (empty($pageBackHomeView)) {
         $pageBackHomeView = 'backHomeView';
         $pageBackHomeView = trim($pageBackHomeView . '.php');
@@ -254,7 +254,7 @@ function home()
     if (preg_match('/admin/', $pageBackHomeView)) {
         throw new Exception('Cette zone est réservée au personnel abilité uniquement');
     } else {
-        $pageBackHomeView = 'backView/' . $pageBackHomeView;
+        $pageBackHomeView = 'BackView/' . $pageBackHomeView;
         if (file_exists($pageBackHomeView) && $pageBackHomeView != 'backIndex.php') {
             require($pageBackHomeView);
         } else {
@@ -290,7 +290,7 @@ function newsList()
     $newsListManager = new BackNewsManagerPDO($db);
     $newsList = $newsListManager->getListNews();
 
-    //require('backView\backHeader.php');
+    //require('BackView\backHeader.php');
     if (empty($pageBackHeader)) {
         $pageBackHeader = 'backHeader';
         $pageBackHeader = trim($pageBackHeader . '.php');
@@ -302,7 +302,7 @@ function newsList()
     if (preg_match('/admin/', $pageBackHeader)) {
         throw new Exception('Cette zone est réservée au personnel abilité uniquement');
     } else {
-        $pageBackHeader = 'backView/' . $pageBackHeader;
+        $pageBackHeader = 'BackView/' . $pageBackHeader;
         if (file_exists($pageBackHeader) && $pageBackHeader != 'backIndex.php') {
             require($pageBackHeader);
         } else {
@@ -310,7 +310,7 @@ function newsList()
         }
     }
 
-    //require('backView\backFooter.php');
+    //require('BackView\backFooter.php');
     if (empty($pageBackFooter)) {
         $pageBackFooter = 'backFooter';
         $pageBackFooter = trim($pageBackFooter . '.php');
@@ -322,7 +322,7 @@ function newsList()
     if (preg_match('/admin/', $pageBackFooter)) {
         throw new Exception('Cette zone est réservée au personnel abilité uniquement');
     } else {
-        $pageBackFooter = 'backView/' . $pageBackFooter;
+        $pageBackFooter = 'BackView/' . $pageBackFooter;
         if (file_exists($pageBackFooter) && $pageBackFooter != 'backIndex.php') {
             require($pageBackFooter);
         } else {
@@ -330,7 +330,7 @@ function newsList()
         }
     }
 
-    //require('backView\backNewsListView.php');
+    //require('BackView\backNewsListView.php');
     if (empty($pageBackNewsListView)) {
         $pageBackNewsListView = 'backNewsListView';
         $pageBackNewsListView = trim($pageBackNewsListView . '.php');
@@ -342,7 +342,7 @@ function newsList()
     if (preg_match('/admin/', $pageBackNewsListView)) {
         throw new Exception('Cette zone est réservée au personnel abilité uniquement');
     } else {
-        $pageBackNewsListView = 'backView/' . $pageBackNewsListView;
+        $pageBackNewsListView = 'BackView/' . $pageBackNewsListView;
         if (file_exists($pageBackNewsListView) && $pageBackNewsListView != 'backIndex.php') {
             require($pageBackNewsListView);
         } else {
@@ -361,7 +361,7 @@ function news()
     $news = $newsManager->getNews($_GET['id']);
     $commentsList = $pageBackCommentsManager->getValidListComments($_GET['id']);
 
-    //require('backView\backHeader.php');
+    //require('BackView\backHeader.php');
     if (empty($pageBackHeader)) {
         $pageBackHeader = 'backHeader';
         $pageBackHeader = trim($pageBackHeader . '.php');
@@ -373,7 +373,7 @@ function news()
     if (preg_match('/admin/', $pageBackHeader)) {
         throw new Exception('Cette zone est réservée au personnel abilité uniquement');
     } else {
-        $pageBackHeader = 'backView/' . $pageBackHeader;
+        $pageBackHeader = 'BackView/' . $pageBackHeader;
         if (file_exists($pageBackHeader) && $pageBackHeader != 'backIndex.php') {
             require($pageBackHeader);
         } else {
@@ -381,7 +381,7 @@ function news()
         }
     }
 
-    //require('backView\backFooter.php');
+    //require('BackView\backFooter.php');
     if (empty($pageBackFooter)) {
         $pageBackFooter = 'backFooter';
         $pageBackFooter = trim($pageBackFooter . '.php');
@@ -393,7 +393,7 @@ function news()
     if (preg_match('/admin/', $pageBackFooter)) {
         throw new Exception('Cette zone est réservée au personnel abilité uniquement');
     } else {
-        $pageBackFooter = 'backView/' . $pageBackFooter;
+        $pageBackFooter = 'BackView/' . $pageBackFooter;
         if (file_exists($pageBackFooter) && $pageBackFooter != 'backIndex.php') {
             require($pageBackFooter);
         } else {
@@ -401,7 +401,7 @@ function news()
         }
     }
 
-    //require('backView\backNewsView.php');
+    //require('BackView\backNewsView.php');
     if (empty($pageBackNewsView)) {
         $pageBackNewsView = 'backNewsView';
         $pageBackNewsView = trim($pageBackNewsView . '.php');
@@ -413,7 +413,7 @@ function news()
     if (preg_match('/admin/', $pageBackNewsView)) {
         throw new Exception('Cette zone est réservée au personnel abilité uniquement');
     } else {
-        $pageBackNewsView = 'backView/' . $pageBackNewsView;
+        $pageBackNewsView = 'BackView/' . $pageBackNewsView;
         if (file_exists($pageBackNewsView) && $pageBackNewsView != 'backIndex.php') {
             require($pageBackNewsView);
         } else {
@@ -429,7 +429,7 @@ function commentsValidationList()
     $commentsValidationListManager = new BackCommentsManagerPDO($db);
     $commentsValidationList = $commentsValidationListManager->getCommentsValidationList();
 
-    //require('backView\backHeader.php');
+    //require('BackView\backHeader.php');
     if (empty($pageBackHeader)) {
         $pageBackHeader = 'backHeader';
         $pageBackHeader = trim($pageBackHeader . '.php');
@@ -441,7 +441,7 @@ function commentsValidationList()
     if (preg_match('/admin/', $pageBackHeader)) {
         throw new Exception('Cette zone est réservée au personnel abilité uniquement');
     } else {
-        $pageBackHeader = 'backView/' . $pageBackHeader;
+        $pageBackHeader = 'BackView/' . $pageBackHeader;
         if (file_exists($pageBackHeader) && $pageBackHeader != 'backIndex.php') {
             require($pageBackHeader);
         } else {
@@ -449,7 +449,7 @@ function commentsValidationList()
         }
     }
 
-    //require('backView\backFooter.php');
+    //require('BackView\backFooter.php');
     if (empty($pageBackFooter)) {
         $pageBackFooter = 'backFooter';
         $pageBackFooter = trim($pageBackFooter . '.php');
@@ -461,7 +461,7 @@ function commentsValidationList()
     if (preg_match('/admin/', $pageBackFooter)) {
         throw new Exception('Cette zone est réservée au personnel abilité uniquement');
     } else {
-        $pageBackFooter = 'backView/' . $pageBackFooter;
+        $pageBackFooter = 'BackView/' . $pageBackFooter;
         if (file_exists($pageBackFooter) && $pageBackFooter != 'backIndex.php') {
             require($pageBackFooter);
         } else {
@@ -469,7 +469,7 @@ function commentsValidationList()
         }
     }
 
-    //require('backView\backCommentsValidationView.php');
+    //require('BackView\backCommentsValidationView.php');
     if (empty($pageBackCommentsValidationView)) {
         $pageBackCommentsValidationView = 'backCommentsValidationView';
         $pageBackCommentsValidationView = trim($pageBackCommentsValidationView . '.php');
@@ -481,7 +481,7 @@ function commentsValidationList()
     if (preg_match('/admin/', $pageBackCommentsValidationView)) {
         throw new Exception('Cette zone est réservée au personnel abilité uniquement');
     } else {
-        $pageBackCommentsValidationView = 'backView/' . $pageBackCommentsValidationView;
+        $pageBackCommentsValidationView = 'BackView/' . $pageBackCommentsValidationView;
         if (file_exists($pageBackCommentsValidationView) && $pageBackCommentsValidationView != 'backIndex.php') {
             require($pageBackCommentsValidationView);
         } else {
@@ -507,7 +507,7 @@ function usersList()
     $usersListManager = new BackUsersManagerPDO($db);
     $usersList = $usersListManager->getUsersList();
 
-    //require('backView\backHeader.php');
+    //require('BackView\backHeader.php');
     if (empty($pageBackHeader)) {
         $pageBackHeader = 'backHeader';
         $pageBackHeader = trim($pageBackHeader . '.php');
@@ -519,7 +519,7 @@ function usersList()
     if (preg_match('/admin/', $pageBackHeader)) {
         throw new Exception('Cette zone est réservée au personnel abilité uniquement');
     } else {
-        $pageBackHeader = 'backView/' . $pageBackHeader;
+        $pageBackHeader = 'BackView/' . $pageBackHeader;
         if (file_exists($pageBackHeader) && $pageBackHeader != 'backIndex.php') {
             require($pageBackHeader);
         } else {
@@ -527,7 +527,7 @@ function usersList()
         }
     }
 
-    //require('backView\backFooter.php');
+    //require('BackView\backFooter.php');
     if (empty($pageBackFooter)) {
         $pageBackFooter = 'backFooter';
         $pageBackFooter = trim($pageBackFooter . '.php');
@@ -539,7 +539,7 @@ function usersList()
     if (preg_match('/admin/', $pageBackFooter)) {
         throw new Exception('Cette zone est réservée au personnel abilité uniquement');
     } else {
-        $pageBackFooter = 'backView/' . $pageBackFooter;
+        $pageBackFooter = 'BackView/' . $pageBackFooter;
         if (file_exists($pageBackFooter) && $pageBackFooter != 'backIndex.php') {
             require($pageBackFooter);
         } else {
@@ -547,7 +547,7 @@ function usersList()
         }
     }
 
-    //require('backView\backUsersListView.php');
+    //require('BackView\backUsersListView.php');
     if (empty($pageBackUsersListView)) {
         $pageBackUsersListView = 'backUsersListView';
         $pageBackUsersListView = trim($pageBackUsersListView . '.php');
@@ -559,7 +559,7 @@ function usersList()
     if (preg_match('/admin/', $pageBackUsersListView)) {
         throw new Exception('Cette zone est réservée au personnel abilité uniquement');
     } else {
-        $pageBackUsersListView = 'backView/' . $pageBackUsersListView;
+        $pageBackUsersListView = 'BackView/' . $pageBackUsersListView;
         if (file_exists($pageBackUsersListView) && $pageBackUsersListView != 'backIndex.php') {
             require($pageBackUsersListView);
         } else {
@@ -585,7 +585,7 @@ function editCommentForm()
     $editCommentFormManager = new BackCommentsManagerPDO($db);
     $editCommentForm = $editCommentFormManager->getEditCommentForm($_GET['id']);
 
-    //require('backView\backHeader.php');
+    //require('BackView\backHeader.php');
     if (empty($pageBackHeader)) {
         $pageBackHeader = 'backHeader';
         $pageBackHeader = trim($pageBackHeader . '.php');
@@ -597,7 +597,7 @@ function editCommentForm()
     if (preg_match('/admin/', $pageBackHeader)) {
         throw new Exception('Cette zone est réservée au personnel abilité uniquement');
     } else {
-        $pageBackHeader = 'backView/' . $pageBackHeader;
+        $pageBackHeader = 'BackView/' . $pageBackHeader;
         if (file_exists($pageBackHeader) && $pageBackHeader != 'backIndex.php') {
             require($pageBackHeader);
         } else {
@@ -605,7 +605,7 @@ function editCommentForm()
         }
     }
 
-    //require('backView\backFooter.php');
+    //require('BackView\backFooter.php');
     if (empty($pageBackFooter)) {
         $pageBackFooter = 'backFooter';
         $pageBackFooter = trim($pageBackFooter . '.php');
@@ -617,7 +617,7 @@ function editCommentForm()
     if (preg_match('/admin/', $pageBackFooter)) {
         throw new Exception('Cette zone est réservée au personnel abilité uniquement');
     } else {
-        $pageBackFooter = 'backView/' . $pageBackFooter;
+        $pageBackFooter = 'BackView/' . $pageBackFooter;
         if (file_exists($pageBackFooter) && $pageBackFooter != 'backIndex.php') {
             require($pageBackFooter);
         } else {
@@ -625,7 +625,7 @@ function editCommentForm()
         }
     }
 
-    //require('backView\backEditCommentView.php');
+    //require('BackView\backEditCommentView.php');
     if (empty($pageBackEditCommentView)) {
         $pageBackEditCommentView = 'backEditCommentView';
         $pageBackEditCommentView = trim($pageBackEditCommentView . '.php');
@@ -637,7 +637,7 @@ function editCommentForm()
     if (preg_match('/admin/', $pageBackEditCommentView)) {
         throw new Exception('Cette zone est réservée au personnel abilité uniquement');
     } else {
-        $pageBackEditCommentView = 'backView/' . $pageBackEditCommentView;
+        $pageBackEditCommentView = 'BackView/' . $pageBackEditCommentView;
         if (file_exists($pageBackEditCommentView) && $pageBackEditCommentView != 'backIndex.php') {
             require($pageBackEditCommentView);
         } else {
@@ -659,7 +659,7 @@ function editComment()
 
 function addNewsForm()
 {
-    //require('backView\backHeader.php');
+    //require('BackView\backHeader.php');
     if (empty($pageBackHeader)) {
         $pageBackHeader = 'backHeader';
         $pageBackHeader = trim($pageBackHeader . '.php');
@@ -671,7 +671,7 @@ function addNewsForm()
     if (preg_match('/admin/', $pageBackHeader)) {
         throw new Exception('Cette zone est réservée au personnel abilité uniquement');
     } else {
-        $pageBackHeader = 'backView/' . $pageBackHeader;
+        $pageBackHeader = 'BackView/' . $pageBackHeader;
         if (file_exists($pageBackHeader) && $pageBackHeader != 'backIndex.php') {
             require($pageBackHeader);
         } else {
@@ -679,7 +679,7 @@ function addNewsForm()
         }
     }
 
-    //require('backView\backFooter.php');
+    //require('BackView\backFooter.php');
     if (empty($pageBackFooter)) {
         $pageBackFooter = 'backFooter';
         $pageBackFooter = trim($pageBackFooter . '.php');
@@ -691,7 +691,7 @@ function addNewsForm()
     if (preg_match('/admin/', $pageBackFooter)) {
         throw new Exception('Cette zone est réservée au personnel abilité uniquement');
     } else {
-        $pageBackFooter = 'backView/' . $pageBackFooter;
+        $pageBackFooter = 'BackView/' . $pageBackFooter;
         if (file_exists($pageBackFooter) && $pageBackFooter != 'backIndex.php') {
             require($pageBackFooter);
         } else {
@@ -699,7 +699,7 @@ function addNewsForm()
         }
     }
 
-    //require('backView\backAddNewsView.php');
+    //require('BackView\backAddNewsView.php');
     if (empty($pageBackAddNewsView)) {
         $pageBackAddNewsView = 'backAddNewsView';
         $pageBackAddNewsView = trim($pageBackAddNewsView . '.php');
@@ -711,7 +711,7 @@ function addNewsForm()
     if (preg_match('/admin/', $pageBackAddNewsView)) {
         throw new Exception('Cette zone est réservée au personnel abilité uniquement');
     } else {
-        $pageBackAddNewsView = 'backView/' . $pageBackAddNewsView;
+        $pageBackAddNewsView = 'BackView/' . $pageBackAddNewsView;
         if (file_exists($pageBackAddNewsView) && $pageBackAddNewsView != 'backIndex.php') {
             require($pageBackAddNewsView);
         } else {
@@ -739,7 +739,7 @@ function editNewsForm()
     $editNewsFormManager = new BackNewsManagerPDO($db);
     $editNewsForm = $editNewsFormManager->getEditNewsForm($_GET['id']);
 
-    //require('backView\backHeader.php');
+    //require('BackView\backHeader.php');
     if (empty($pageBackHeader)) {
         $pageBackHeader = 'backHeader';
         $pageBackHeader = trim($pageBackHeader . '.php');
@@ -751,7 +751,7 @@ function editNewsForm()
     if (preg_match('/admin/', $pageBackHeader)) {
         throw new Exception('Cette zone est réservée au personnel abilité uniquement');
     } else {
-        $pageBackHeader = 'backView/' . $pageBackHeader;
+        $pageBackHeader = 'BackView/' . $pageBackHeader;
         if (file_exists($pageBackHeader) && $pageBackHeader != 'backIndex.php') {
             require($pageBackHeader);
         } else {
@@ -759,7 +759,7 @@ function editNewsForm()
         }
     }
 
-    //require('backView\backFooter.php');
+    //require('BackView\backFooter.php');
     if (empty($pageBackFooter)) {
         $pageBackFooter = 'backFooter';
         $pageBackFooter = trim($pageBackFooter . '.php');
@@ -771,7 +771,7 @@ function editNewsForm()
     if (preg_match('/admin/', $pageBackFooter)) {
         throw new Exception('Cette zone est réservée au personnel abilité uniquement');
     } else {
-        $pageBackFooter = 'backView/' . $pageBackFooter;
+        $pageBackFooter = 'BackView/' . $pageBackFooter;
         if (file_exists($pageBackFooter) && $pageBackFooter != 'backIndex.php') {
             require($pageBackFooter);
         } else {
@@ -779,7 +779,7 @@ function editNewsForm()
         }
     }
 
-    //require('backView\backEditNewsView.php');
+    //require('BackView\backEditNewsView.php');
     if (empty($pageBackEditNewsView)) {
         $pageBackEditNewsView = 'backEditNewsView';
         $pageBackEditNewsView = trim($pageBackEditNewsView . '.php');
@@ -791,7 +791,7 @@ function editNewsForm()
     if (preg_match('/admin/', $pageBackEditNewsView)) {
         throw new Exception('Cette zone est réservée au personnel abilité uniquement');
     } else {
-        $pageBackEditNewsView = 'backView/' . $pageBackEditNewsView;
+        $pageBackEditNewsView = 'BackView/' . $pageBackEditNewsView;
         if (file_exists($pageBackEditNewsView) && $pageBackEditNewsView != 'backIndex.php') {
             require($pageBackEditNewsView);
         } else {
