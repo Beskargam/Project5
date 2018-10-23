@@ -1,8 +1,12 @@
 <?php
 
+ini_set('display_errors', -1);
+ini_set('display_startup_errors', -1);
+error_reporting(E_ALL);
+
 //require('backController/backController.php');
 if (empty($pageController)) {
-    $pageController = 'backController';
+    $pageController = 'BackController';
     $pageController = trim($pageController . '.php');
 }
 $pageController = str_replace('../', 'protect', $pageController);
@@ -11,7 +15,7 @@ $pageController = str_replace('%', 'protect', $pageController);
 if (preg_match('/admin/', $pageController)) {
     throw new Exception('Cette zone est réservée au personnel abilité uniquement');
 } else {
-    $pageController = "backController/" . $pageController;
+    $pageController = "BackController/" . $pageController;
     if (file_exists($pageController) && $pageController != 'backIndex.php') {
         require($pageController);
     } else {
@@ -91,7 +95,7 @@ try {
     if (preg_match('/admin/', $pageErrorView)) {
         throw new Exception('Cette zone est réservée au personnel abilité uniquement');
     } else {
-        $pageErrorView = "backError/" . $pageErrorView;
+        $pageErrorView = "BackError/" . $pageErrorView;
         if (file_exists($pageErrorView) && $pageErrorView != 'backIndex.php') {
             require($pageErrorView);
         } else {
