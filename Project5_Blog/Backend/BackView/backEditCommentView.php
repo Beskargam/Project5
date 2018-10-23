@@ -61,7 +61,7 @@ $pageBackLayout = str_replace('%', 'protect', $pageBackLayout);
 if (preg_match('/admin/', $pageBackLayout)) {
     throw new Exception('Cette zone est réservée au personnel abilité uniquement');
 } else {
-    $pageBackLayout = 'backView/backLayout/' . $pageBackLayout;
+    $pageBackLayout = 'BackView/backLayout/' . $pageBackLayout;
     if (file_exists($pageBackLayout) && $pageBackLayout != 'backIndex.php') {
         require($pageBackLayout);
     } else {

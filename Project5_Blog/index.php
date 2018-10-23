@@ -1,5 +1,9 @@
 <?php
 
+ini_set('display_errors', -1);
+ini_set('display_startup_errors', -1);
+error_reporting(E_ALL);
+
 //require('Controller/frontController.php');
 if (empty($pageController)) {
     $pageController = 'frontController';
@@ -29,7 +33,7 @@ try {
                 connexion();
             }
             home();
-        } elseif ($_GET['action'] == 'newsList') {
+        } elseif ($_GET['action'] == 'newslist') {
             if (isset($_POST['username']) AND isset($_POST['password'])) {
                 connexion();
             }

@@ -8,7 +8,7 @@
         <div class="row">
             <ul class="navbar-nav mr-auto>
                 <li class="nav-item"><a class="nav-link" href="backIndex.php?action=home">Home</a></li>
-                <li class="nav-item"><a class="nav-link" href="backModel\backLogout.php">Déconnexion</a></li>
+                <li class="nav-item"><a class="nav-link" href="BackModel\backLogout.php">Déconnexion</a></li>
             </ul>
         </div>
     </nav>

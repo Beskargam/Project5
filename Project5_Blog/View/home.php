@@ -25,7 +25,7 @@ ob_start(); ?>
 
                 </div>
                 <div class="col-sm-2 col-md-2 col-lg-2 title-home-btn">
-                    <a class="title-home-link" href="index.php?action=newsList">Voir tout</a>
+                    <a class="title-home-link" href="index.php?action=newslist">Voir tout</a>
                 </div>
             </div>
             <div class="row">

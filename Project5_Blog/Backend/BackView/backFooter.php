@@ -8,12 +8,12 @@ ob_start(); ?>
         <div class="row justify-content-center">
             <div class="footer-col">
                 <div class="footer-title">
-                    <a class="footer-logo" href="index.php?action=home"><img src="BackPublic/Images/logo.png" width="64"
+                    <a class="footer-logo" href="backIndex.php?action=home"><img src="BackPublic/Images/logo.png" width="64"
                                                                              height="30" alt=""></a>|
                     <span class="footer-title-text">NAVIGATION</span>
                 </div>
                 <ul class="footer-nav">
-                    <li class="footer-nav-item"><a class="footer-link" href="backIndex">HOME</a>
+                    <li class="footer-nav-item"><a class="footer-link" href="backIndex.php">HOME</a>
                     </li>
                 </ul>
             </div>

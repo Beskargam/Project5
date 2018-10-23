@@ -14,7 +14,7 @@ $title = htmlspecialchars('Erreur');
                     <div id="lower_left-corner"></div>
                     <div id="lower_right-corner"></div>
 
-                    <h4 class="card-error-subtitle">TYPE / <span class="post-group">MESSAGE</span></h4>
+                    <h4 class="card-error-subtitle">TYPE / <span class="type-group">MESSAGE</span></h4>
                     <h3 class="card-error-title"><?php echo htmlspecialchars('' . $errorMessage) ?></h3>
                     <p class="card-error-text">
                         Il est inutile d'appeler un Anvil Crucible Pour ça...
