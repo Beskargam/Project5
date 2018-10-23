@@ -16,7 +16,7 @@ ob_start(); ?>
                     <li class="footer-nav-item"><a class="footer-link" href="index.php?action=home">HOME</a>
                     </li>
                     <li class="footer-nav-item"><a class="footer-link"
-                                                   href="index.php?action=newsList">COMM-LINK</a>
+                                                   href="index.php?action=newslist">COMM-LINK</a>
                     </li>
                     <li class="footer-nav-item"><a class="footer-link" href="index.php?action=contact">CONTACTS</a>
                     </li>
